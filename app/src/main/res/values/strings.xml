@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SholatQ</string>
+    <string name="open_drawer">Open Navigation drawer</string>
+    <string name="close_drawer">Close Navigation drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
