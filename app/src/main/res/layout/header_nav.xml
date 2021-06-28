@@ -5,12 +5,11 @@
     android:padding="@dimen/dimen30"
     android:layout_height="match_parent">
 
-    <TextView
+    <ImageView
         android:id="@+id/logo_nav"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logo"
-        android:textColor="@color/white"
+        android:layout_width="@dimen/dimen200"
+        android:layout_height="@dimen/dimen200"
+        android:src="@drawable/logo"
         android:layout_centerHorizontal="true"
         android:textSize="50sp"
         />

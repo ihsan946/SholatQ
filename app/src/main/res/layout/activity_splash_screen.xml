@@ -8,16 +8,13 @@
     android:background="@color/dark_liver"
     android:padding="50dp"
     tools:context=".main.SplashScreen">
-    <TextView
+    <ImageView
+        android:layout_width="@dimen/dimen200"
+        android:layout_height="@dimen/dimen200"
         android:id="@+id/logo_splash"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Logo"
-        android:textSize="40sp"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textColor="@color/white"
+        android:src="@drawable/logo"
         />
     <me.ibrahimsn.lib.CirclesLoadingView
         android:id="@+id/loadingview_splash"

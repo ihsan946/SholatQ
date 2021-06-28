@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
 
+
         }
 
         if (fragment != null) {

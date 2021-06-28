@@ -4,10 +4,6 @@
         android:id="@+id/group1_menu"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/home"
-            android:title="home"
-            />
-        <item
             android:id="@+id/menu1"
             android:title="Jadwal Sholat" />
         <item
