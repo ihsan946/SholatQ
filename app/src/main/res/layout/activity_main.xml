@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
+        android:id="@+id/text_utama"
         android:gravity="center"
         android:textColor="@color/white"
          />
