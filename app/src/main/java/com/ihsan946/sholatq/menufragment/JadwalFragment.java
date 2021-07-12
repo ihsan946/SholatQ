@@ -4,11 +4,27 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ihsan946.sholatq.R;
+import com.ihsan946.sholatq.api.ApiEndpointJadwal;
+import com.ihsan946.sholatq.api.ApiEndpointLokasi;
+import com.ihsan946.sholatq.api.ApiServiceJadwal;
+import com.ihsan946.sholatq.api.ApiServiceLokasi;
+import com.ihsan946.sholatq.model.ApimodelJadwal;
+import com.ihsan946.sholatq.model.ApimodelLokasi;
+import com.ihsan946.sholatq.model.DatetimeModel;
+import com.ihsan946.sholatq.sharedpreferenced.Preference;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +32,8 @@ import com.ihsan946.sholatq.R;
  * create an instance of this fragment.
  */
 public class JadwalFragment extends Fragment {
+
+    private List<DatetimeModel> items = new ArrayList<>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +79,36 @@ public class JadwalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_jadwal, container, false);
+        View view = inflater.inflate(R.layout.fragment_jadwal, container, false);
+//
+        getJadwalSholat();
+
+        return view;
     }
+
+    public void getJadwalSholat(){
+        String nama_kota = Preference.getNamaKota(getActivity());
+
+        ApiServiceJadwal api = ApiEndpointJadwal.getClient().create(ApiServiceJadwal.class);
+
+        Call<ApimodelJadwal> call = api.getJadwal(nama_kota);
+        call.enqueue(new Callback<ApimodelJadwal>() {
+            @Override
+            public void onResponse(Call<ApimodelJadwal> call, Response<ApimodelJadwal> response) {
+                items = response.body().result;
+                Log.d("result",items.toString());
+            }
+
+            @Override
+            public void onFailure(Call<ApimodelJadwal> call, Throwable t) {
+
+            }
+        });
+
+
+
+    }
+
+
+
 }

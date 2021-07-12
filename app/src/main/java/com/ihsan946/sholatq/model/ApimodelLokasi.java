@@ -2,7 +2,7 @@ package com.ihsan946.sholatq.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Apimodel {
+public class ApimodelLokasi {
 
 
     //   get lokasi pengguna

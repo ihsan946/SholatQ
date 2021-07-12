@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,12 +20,10 @@ import com.ihsan946.sholatq.R;
 import com.ihsan946.sholatq.api.ApiEndpointLokasi;
 import com.ihsan946.sholatq.api.ApiServiceLokasi;
 import com.ihsan946.sholatq.menufragment.JadwalFragment;
-import com.ihsan946.sholatq.model.Apimodel;
+import com.ihsan946.sholatq.model.ApimodelLokasi;
 import com.ihsan946.sholatq.model.Sholatqmodel;
+import com.ihsan946.sholatq.sharedpreferenced.Preference;
 
-import java.util.HashMap;
-
-import io.ipgeolocation.api.IPGeolocationAPI;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,7 +35,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigasi;
     DrawerLayout drawer;
     Sholatqmodel model;
-    String Ip_device;
+    String hasil;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //
 
 //        get ip device
-        getIp();
+
         getLokasi();
 
 //
@@ -127,43 +125,51 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
-
     public void getLokasi(){
         ApiServiceLokasi api = ApiEndpointLokasi.getClient().create(ApiServiceLokasi.class);
-        Apimodel model1 = new Apimodel();
+        ApimodelLokasi model1 = new ApimodelLokasi();
 
 
-        Call<Apimodel> call = api.getLokasi(Ip_device);
-        call.enqueue(new Callback<Apimodel>() {
+        Call<ApimodelLokasi> call = api.getLokasi(Preference.getIpDevice(getBaseContext()));
+        call.enqueue(new Callback<ApimodelLokasi>() {
             @Override
-            public void onResponse(Call<Apimodel> call, Response<Apimodel> response) {
+            public void onResponse(Call<ApimodelLokasi> call, Response<ApimodelLokasi> response) {
                 TextView text_utama = findViewById(R.id.text_utama);
-
-                text_utama.setText(response.body().getHasil());
+                hasil = response.body().getHasil();
+                text_utama.setText(hasil);
+                getCity();
             }
 
             @Override
-            public void onFailure(Call<Apimodel> call, Throwable t) {
+            public void onFailure(Call<ApimodelLokasi> call, Throwable t) {
 
             }
         });
 
+    }
+
+    public void getCity(){
+        String [] pecahkata = hasil.split("\\n");
+
+        Log.d("Pecah",pecahkata[0]);
+        Log.d("Pecah",pecahkata[1]);
+        Log.d("Pecah",pecahkata[2]);
+        Log.d("Pecah",pecahkata[3]);
+        Log.d("Pecah",pecahkata[4]);
+        Log.d("Pecah",pecahkata[5]);
+
+        String hasil_pecah = pecahkata[3];
+        String [] pecahkota = hasil_pecah.split("\\s");
+
+        Log.d("PecahKota",pecahkota[0]);
+        Log.d("PecahKota",pecahkota[1]);
+
+//        simpan nama kota
+        Preference.setKotaPreferences(getBaseContext(),pecahkota[1]);
 
 
 
     }
 
-    public void getIp() {
 
-        String api_key = "e6a93eb6352441deba4e8801ab7c125d";
-        IPGeolocationAPI ip = new IPGeolocationAPI(api_key);
-
-        String ip_device;
-        ip_device = ip.getGeolocation().getIPAddress();
-//            Log.d("IP","IP sama dengan : "+ip_device);
-        Ip_device = ip_device;
-//        Log.d("IP","IP sama dengan : "+model.getIp_device());
-
-    }
 }
