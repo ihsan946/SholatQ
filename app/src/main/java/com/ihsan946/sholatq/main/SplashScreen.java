@@ -27,6 +27,7 @@ public class SplashScreen extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 //
         getIp();
+//
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -46,6 +47,16 @@ public class SplashScreen extends AppCompatActivity {
 
         String api_key = "e6a93eb6352441deba4e8801ab7c125d";
         IPGeolocationAPI ip = new IPGeolocationAPI(api_key);
+
+//      get latitude and longitude
+        String latitude,longitude;
+        latitude = ip.getGeolocation().getLatitude();
+        longitude = ip.getGeolocation().getLongitude();
+
+        Preference.setLatitudePreferences(getBaseContext(),latitude);
+        Preference.setLongitudePreferences(getBaseContext(),longitude);
+
+//
 
         String ip_device;
         ip_device = ip.getGeolocation().getIPAddress();

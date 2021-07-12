@@ -8,9 +8,18 @@ import java.util.List;
 public class DatetimeModel {
 
     @SerializedName("datetime")
-    public List<times2Model> datetime = new ArrayList<>();
+    public times2Model [] datetime;
 
-    public List<times2Model> getDatetime() {
-        return datetime;
-    }
+    @SerializedName("date")
+    public String [] date;
+
+    //    @SerializedName("location")
+//    public List<String> location = new ArrayList<>();
+//
+//    @SerializedName("settings")
+//    public List<String> settings = new ArrayList<>();
+
+
+
+
 }

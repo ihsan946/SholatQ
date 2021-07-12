@@ -10,7 +10,7 @@ public class ApiEndpointJadwal {
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient(){
-        String base_url = "https://api.pray.zone/v2/times/";
+        String base_url = "https://api.pray.zone/";
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();

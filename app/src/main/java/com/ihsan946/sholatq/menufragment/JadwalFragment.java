@@ -8,7 +8,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.batoulapps.adhan.CalculationMethod;
+import com.batoulapps.adhan.CalculationParameters;
+import com.batoulapps.adhan.Coordinates;
+import com.batoulapps.adhan.Madhab;
+import com.batoulapps.adhan.PrayerTimes;
+import com.batoulapps.adhan.data.DateComponents;
 import com.ihsan946.sholatq.R;
 import com.ihsan946.sholatq.api.ApiEndpointJadwal;
 import com.ihsan946.sholatq.api.ApiEndpointLokasi;
@@ -19,8 +26,12 @@ import com.ihsan946.sholatq.model.ApimodelLokasi;
 import com.ihsan946.sholatq.model.DatetimeModel;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,7 +44,10 @@ import retrofit2.Response;
  */
 public class JadwalFragment extends Fragment {
 
-    private List<DatetimeModel> items = new ArrayList<>();
+
+    TextView shubuh,dzuhur,asr,maghrib,isya,lokasi;
+    String time_shubuh,time_dzuhur,time_asr,time_maghrib,time_isya;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,33 +95,112 @@ public class JadwalFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_jadwal, container, false);
 //
-        getJadwalSholat();
 
+//
+        getJadwalSholat();
+//
+        shubuh = view.findViewById(R.id.value_shubuh);
+        dzuhur = view.findViewById(R.id.value_dzuhur);
+        asr = view.findViewById(R.id.value_ashar);
+        maghrib = view.findViewById(R.id.value_maghrib);
+        isya = view.findViewById(R.id.value_isya);
+        lokasi = view.findViewById(R.id.value_lokasi);
+
+        shubuh.setText(time_shubuh);
+        dzuhur.setText(time_dzuhur);
+        asr.setText(time_asr);
+        maghrib.setText(time_maghrib);
+        isya.setText(time_isya);
+        lokasi.setText(Preference.getIpDevice(getActivity()));
+
+
+//
         return view;
     }
+//
 
     public void getJadwalSholat(){
-        String nama_kota = Preference.getNamaKota(getActivity());
+//        latitude and longitude
+        double latitude,longitude;
+        latitude = Double.parseDouble(Preference.getLatitudePreferences(getActivity()));
+        longitude = Double.parseDouble(Preference.getLongitudePreferences(getActivity()));
 
-        ApiServiceJadwal api = ApiEndpointJadwal.getClient().create(ApiServiceJadwal.class);
+        Coordinates coordinates = new Coordinates(latitude,longitude);
 
-        Call<ApimodelJadwal> call = api.getJadwal(nama_kota);
-        call.enqueue(new Callback<ApimodelJadwal>() {
-            @Override
-            public void onResponse(Call<ApimodelJadwal> call, Response<ApimodelJadwal> response) {
-                items = response.body().result;
-                Log.d("result",items.toString());
-            }
 
-            @Override
-            public void onFailure(Call<ApimodelJadwal> call, Throwable t) {
+        DateComponents date = DateComponents.from(new Date());
 
-            }
-        });
+        CalculationParameters params = CalculationMethod.SINGAPORE.getParameters();
+        params.madhab = Madhab.SHAFI;
+
+        PrayerTimes prayer = new PrayerTimes(coordinates,date,params);
+
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm ", Locale.UK);
+        formatter.setTimeZone(TimeZone.getTimeZone("Asia/Jakarta"));
+
+//        set value
+        time_shubuh = String.valueOf(formatter.format(prayer.fajr));
+        time_dzuhur = String.valueOf(formatter.format(prayer.dhuhr));
+        time_asr = String.valueOf(formatter.format(prayer.asr));
+        time_maghrib = String.valueOf(formatter.format(prayer.maghrib));
+        time_isya = String.valueOf(formatter.format(prayer.isha));
+//
+
+
+
 
 
 
     }
+
+
+
+//
+
+
+
+
+
+
+
+//    public void getJadwal(){
+//        String nama_kota = Preference.getNamaKota(getActivity());
+//        Log.d("namaKota", nama_kota);
+//        ApiServiceJadwal api = ApiEndpointJadwal.getClient().create(ApiServiceJadwal.class);
+//
+//        Call<ApimodelJadwal> call = api.getJadwal(Preference.getIpDevice(getActivity()));
+//        call.enqueue(new Callback<ApimodelJadwal>() {
+//            @Override
+//            public void onResponse(Call<ApimodelJadwal> call, Response<ApimodelJadwal> response) {
+////                List<DatetimeModel> results = response.body().result;
+//                int code = response.body().getCode();
+//                Log.d("Hasil", String.valueOf(code));
+//
+//
+//
+//
+//
+//
+////                Log.d("result", response.body().result.toString());
+//
+//
+//
+//
+//
+////                Log.d("result",items.get(0).getDatetime().get(0).getTimes().toString());
+////                datetimeModel = new DatetimeModel();
+////                datetimeModel.setDatetime(items.get(0).getDatetime());
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ApimodelJadwal> call, Throwable t) {
+//
+//            }
+//        });
+//
+//    }
+
 
 
 

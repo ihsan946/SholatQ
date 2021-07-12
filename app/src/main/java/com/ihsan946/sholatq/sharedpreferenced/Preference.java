@@ -11,6 +11,8 @@ public class Preference {
 
     private static String IP_DEVICE = "IP_DEVICE";
     private static String NAMA_KOTA = "NAMA_KOTA";
+    private static String LATITUDE = "LATITUDE";
+    private static String LONGITUDE = "LONGITUDE";
 
     private Context context;
 
@@ -32,6 +34,8 @@ public class Preference {
         return preferences.getString(IP_DEVICE, Utilstatic.DEFAULT_STRING);
     }
 
+
+    //
     public static void setKotaPreferences(Context context, String kota){
         SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -47,5 +51,37 @@ public class Preference {
     }
 
 //
+// get latitude and logitude
+    public static String getLatitudePreferences(Context context){
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        return preferences.getString(LATITUDE, Utilstatic.DEFAULT_STRING);
+
+    }
+
+    public static void setLatitudePreferences(Context context, String latitude){
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString(LATITUDE,latitude);
+        editor.apply();
+    }
+
+    public static String getLongitudePreferences(Context context){
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        return preferences.getString(LONGITUDE, Utilstatic.DEFAULT_STRING);
+
+    }
+
+    public static void setLongitudePreferences(Context context, String longitude){
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString(LONGITUDE,longitude);
+        editor.apply();
+    }
+
+
+//
+
 
 }

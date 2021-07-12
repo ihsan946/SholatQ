@@ -125,8 +125,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/name_lokasi"
                 android:layout_alignParentBottom="true"
-                android:text="Lokasi : "
-                android:textSize="25sp"
+                android:text="IP address Anda : "
+                android:textSize="22sp"
                 android:layout_marginBottom="@dimen/dimen30"
                 />
             <TextView
@@ -136,7 +136,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_toRightOf="@id/name_lokasi"
                 android:text="----------"
-                android:textSize="25sp"
+                android:textSize="22sp"
                 android:layout_marginBottom="@dimen/dimen30"
                 />
 

@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.core.widget.TextViewOnReceiveContentListener;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -17,12 +18,18 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.ihsan946.sholatq.R;
+import com.ihsan946.sholatq.api.ApiEndpointJadwal;
 import com.ihsan946.sholatq.api.ApiEndpointLokasi;
+import com.ihsan946.sholatq.api.ApiServiceJadwal;
 import com.ihsan946.sholatq.api.ApiServiceLokasi;
 import com.ihsan946.sholatq.menufragment.JadwalFragment;
+import com.ihsan946.sholatq.model.ApimodelJadwal;
 import com.ihsan946.sholatq.model.ApimodelLokasi;
+import com.ihsan946.sholatq.model.DatetimeModel;
 import com.ihsan946.sholatq.model.Sholatqmodel;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -81,7 +88,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 //        get ip device
 
-        getLokasi();
+
+
 
 //
 
@@ -125,51 +133,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    public void getLokasi(){
-        ApiServiceLokasi api = ApiEndpointLokasi.getClient().create(ApiServiceLokasi.class);
-        ApimodelLokasi model1 = new ApimodelLokasi();
 
 
-        Call<ApimodelLokasi> call = api.getLokasi(Preference.getIpDevice(getBaseContext()));
-        call.enqueue(new Callback<ApimodelLokasi>() {
-            @Override
-            public void onResponse(Call<ApimodelLokasi> call, Response<ApimodelLokasi> response) {
-                TextView text_utama = findViewById(R.id.text_utama);
-                hasil = response.body().getHasil();
-                text_utama.setText(hasil);
-                getCity();
-            }
+//    public void getCity(){
+//        String [] pecahkata = hasil.split("\\n");
+//
+//        Log.d("Pecah",pecahkata[0]);
+////        Log.d("Pecah",pecahkata[1]);
+////        Log.d("Pecah",pecahkata[2]);
+//        Log.d("Pecah",pecahkata[3]);
+//        Log.d("Pecah",pecahkata[4]);
+//        Log.d("Pecah",pecahkata[5]);
 
-            @Override
-            public void onFailure(Call<ApimodelLokasi> call, Throwable t) {
-
-            }
-        });
-
-    }
-
-    public void getCity(){
-        String [] pecahkata = hasil.split("\\n");
-
-        Log.d("Pecah",pecahkata[0]);
-        Log.d("Pecah",pecahkata[1]);
-        Log.d("Pecah",pecahkata[2]);
-        Log.d("Pecah",pecahkata[3]);
-        Log.d("Pecah",pecahkata[4]);
-        Log.d("Pecah",pecahkata[5]);
-
-        String hasil_pecah = pecahkata[3];
-        String [] pecahkota = hasil_pecah.split("\\s");
-
-        Log.d("PecahKota",pecahkota[0]);
-        Log.d("PecahKota",pecahkota[1]);
+//        String hasil_pecah = pecahkata[3];
+//        String [] pecahkota = hasil_pecah.split("\\s");
+//
+//        Log.d("PecahKota",pecahkota[0]);
+//        Log.d("PecahKota",pecahkota[1]);
 
 //        simpan nama kota
-        Preference.setKotaPreferences(getBaseContext(),pecahkota[1]);
+//        Preference.setKotaPreferences(getBaseContext(),pecahkota[1]);
+
+//    }
 
 
-
-    }
 
 
 }

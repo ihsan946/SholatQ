@@ -11,6 +11,15 @@ public class ApimodelJadwal {
     public int code;
     @SerializedName("status")
     public String status;
-    @SerializedName("result")
-    public List<DatetimeModel> result = new ArrayList<>();
+    @SerializedName("results")
+    public List<DatetimeModel> result;
+
+    public List<DatetimeModel> getResult() {
+        return result;
+    }
+
+    public int getCode() {
+        return code;
+    }
 }
+
