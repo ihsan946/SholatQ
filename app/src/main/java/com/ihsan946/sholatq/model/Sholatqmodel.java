@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Sholatqmodel {
 
     private String Ip_device;
-
+    private String hasil;
 
     public String getIp_device() {
         return Ip_device;
@@ -15,11 +15,14 @@ public class Sholatqmodel {
         this.Ip_device = ip_device;
     }
 
+    public String getHasil() {
+        return hasil;
+    }
 
-
-
-
-    //
+    public void setHasil(String hasil) {
+        this.hasil = hasil;
+    }
+//
 
 
 

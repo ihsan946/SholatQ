@@ -111,7 +111,7 @@ public class JadwalFragment extends Fragment {
         asr.setText(time_asr);
         maghrib.setText(time_maghrib);
         isya.setText(time_isya);
-        lokasi.setText(Preference.getIpDevice(getActivity()));
+        lokasi.setText(Preference.getNamaKota(getActivity()));
 
 
 //

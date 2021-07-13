@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigasi;
     DrawerLayout drawer;
     Sholatqmodel model;
-    String hasil;
+    String Hasil;
 
 
     @Override
@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 //        get ip device
 
+        getLokasi();
+
 
 
 
@@ -132,29 +134,71 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    public void getLokasi(){
+        ApiServiceLokasi api = ApiEndpointLokasi.getClient().create(ApiServiceLokasi.class);
+
+        Call<ApimodelLokasi> call = api.getLokasi(Preference.getIpDevice(getBaseContext()));
+        call.enqueue(new Callback<ApimodelLokasi>() {
+            @Override
+            public void onResponse(Call<ApimodelLokasi> call, Response<ApimodelLokasi> response) {
+              Hasil = response.body().hasil;
+
+              getCity();
+
+            }
+
+            @Override
+            public void onFailure(Call<ApimodelLokasi> call, Throwable t) {
+
+            }
+        });
+
+
+    }
 
 
 
-//    public void getCity(){
-//        String [] pecahkata = hasil.split("\\n");
-//
+    public void getCity(){
+        String [] pecahkata = Hasil.split("\\n");
+
 //        Log.d("Pecah",pecahkata[0]);
-////        Log.d("Pecah",pecahkata[1]);
-////        Log.d("Pecah",pecahkata[2]);
+//        Log.d("Pecah",pecahkata[1]);
+//        Log.d("Pecah",pecahkata[2]);
 //        Log.d("Pecah",pecahkata[3]);
 //        Log.d("Pecah",pecahkata[4]);
 //        Log.d("Pecah",pecahkata[5]);
 
-//        String hasil_pecah = pecahkata[3];
-//        String [] pecahkota = hasil_pecah.split("\\s");
+        String hasil_pecahkota = pecahkata[3];
+        String hasil_pecahlatitude = pecahkata[4];
+        String hasil_pecahlongitude = pecahkata[5];
+
+        String [] pecahlatitude = hasil_pecahlatitude.split("\\s");
+        String [] pecahlongitude = hasil_pecahlongitude.split("\\s");
+        String [] pecahkota = hasil_pecahkota.split("\\s");
+
+//        Log.d("PecahKota",pecahlatitude[0]);
+//        Log.d("PecahKota",pecahlatitude[1]);
+//        Log.d("PecahKota",pecahlongitude[0]);
+//        Log.d("PecahKota",pecahlongitude[1]);
+
+        String Latitude = pecahlatitude[1];
+        String Longitude = pecahlongitude[1];
+        String Kota = pecahkota[1];
+
 //
-//        Log.d("PecahKota",pecahkota[0]);
-//        Log.d("PecahKota",pecahkota[1]);
+//
+        Preference.setLatitudePreferences(getBaseContext(),Latitude);
+        Preference.setLongitudePreferences(getBaseContext(),Longitude);
+        Preference.setKotaPreferences(getBaseContext(),Kota);
 
-//        simpan nama kota
-//        Preference.setKotaPreferences(getBaseContext(),pecahkota[1]);
+//        String latitude,longitude;
+//        latitude = ip.getGeolocation().getLatitude();
+//        longitude = ip.getGeolocation().getLongitude();
 
-//    }
+//        Preference.setLatitudePreferences(getBaseContext(),latitude);
+//        Preference.setLongitudePreferences(getBaseContext(),longitude);
+
+    }
 
 
 

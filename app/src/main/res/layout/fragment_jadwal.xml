@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/name_lokasi"
                 android:layout_alignParentBottom="true"
-                android:text="IP address Anda : "
+                android:text="Lokasi Kota Anda : "
                 android:textSize="22sp"
                 android:layout_marginBottom="@dimen/dimen30"
                 />

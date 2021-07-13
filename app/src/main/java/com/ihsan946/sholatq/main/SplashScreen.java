@@ -49,12 +49,12 @@ public class SplashScreen extends AppCompatActivity {
         IPGeolocationAPI ip = new IPGeolocationAPI(api_key);
 
 //      get latitude and longitude
-        String latitude,longitude;
-        latitude = ip.getGeolocation().getLatitude();
-        longitude = ip.getGeolocation().getLongitude();
+//        String latitude,longitude;
+//        latitude = ip.getGeolocation().getLatitude();
+//        longitude = ip.getGeolocation().getLongitude();
 
-        Preference.setLatitudePreferences(getBaseContext(),latitude);
-        Preference.setLongitudePreferences(getBaseContext(),longitude);
+//        Preference.setLatitudePreferences(getBaseContext(),latitude);
+//        Preference.setLongitudePreferences(getBaseContext(),longitude);
 
 //
 
