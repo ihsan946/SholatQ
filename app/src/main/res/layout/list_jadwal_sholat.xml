@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="500dp"
+    android:orientation="horizontal"
+    >
+
+    <RelativeLayout
+        android:id="@+id/layoutbawah_jadwal"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/border_jadwal"
+        android:layout_height="400dp"
+        android:layout_margin="@dimen/dimen10"
+        android:padding="@dimen/dimen10"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name_jadwal_sholat"
+            android:text="Shubuh "
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="40sp"
+            android:layout_marginBottom="@dimen/dimen20"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/value_jadwal_sholat"
+            android:layout_below="@id/name_jadwal_sholat"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="--:--"
+            android:textSize="40sp"
+            />
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

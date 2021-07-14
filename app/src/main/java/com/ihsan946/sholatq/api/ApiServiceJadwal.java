@@ -10,7 +10,7 @@ import retrofit2.http.Query;
 
 public interface ApiServiceJadwal {
 //    jadwal harian
-    @GET("v2/times/today.json")
-    Call<ApimodelJadwal> getJadwal(@Query("ip") String ip);
+//    @GET("v2/times/today.json")
+//    Call<ApimodelJadwal> getJadwal(@Query("ip") String ip);
 
 }

@@ -13,137 +13,85 @@
         android:padding="@dimen/dimen10"
         >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Jadwal sholat hari ini"
-            android:textColor="@color/white"
-            android:layout_above="@id/layoutbawah_jadwal"
-            android:textSize="20sp"
-            android:layout_marginLeft="@dimen/dimen10"
-            />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/cardview_atas_jadwal"
+                android:layout_marginLeft="@dimen/dimen10"
+                android:layout_marginRight="@dimen/dimen10"
+                android:layout_marginBottom="@dimen/dimen10"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/layoutatas_jadwal"
+                    android:layout_height="150dp"
+                    >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/gambaratas_jadwal"
 
-        <RelativeLayout
-            android:id="@+id/layoutbawah_jadwal"
-            android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_height="@dimen/dimen525"
-            android:background="@drawable/border_jadwal"
-            android:layout_margin="@dimen/dimen10"
-            android:padding="@dimen/dimen10"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/name_shubuh"
-                android:text="Shubuh : "
-                android:textSize="@dimen/sp30"
-                android:layout_marginBottom="@dimen/dimen20"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/value_shubuh"
-                android:layout_toRightOf="@id/name_shubuh"
-                android:text="--:--"
-                android:textSize="@dimen/sp30"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/name_dzuhur"
-                android:layout_below="@id/name_shubuh"
-                android:text="Dzuhur : "
-                android:textSize="@dimen/sp30"
-                android:layout_marginBottom="@dimen/dimen20"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/value_dzuhur"
-                android:layout_below="@id/name_shubuh"
-                android:layout_toRightOf="@id/name_dzuhur"
-                android:text="--:--"
-                android:textSize="@dimen/sp30"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/name_ashar"
-                android:layout_below="@id/name_dzuhur"
-                android:text="Ashar : "
-                android:textSize="@dimen/sp30"
-                android:layout_marginBottom="@dimen/dimen20"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/value_ashar"
-                android:layout_below="@id/name_dzuhur"
-                android:layout_toRightOf="@id/name_ashar"
-                android:text="--:--"
-                android:textSize="@dimen/sp30"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/name_maghrib"
-                android:layout_below="@id/name_ashar"
-                android:text="Maghrib : "
-                android:textSize="@dimen/sp30"
-                android:layout_marginBottom="@dimen/dimen20"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/value_maghrib"
-                android:layout_below="@id/name_ashar"
-                android:layout_toRightOf="@id/name_maghrib"
-                android:text="--:--"
-                android:textSize="@dimen/sp30"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/name_isya"
-                android:layout_below="@id/name_maghrib"
-                android:text="Isya : "
-                android:textSize="@dimen/sp30"
-                android:layout_marginBottom="@dimen/dimen20"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/value_isya"
-                android:layout_below="@id/name_maghrib"
-                android:layout_toRightOf="@id/name_isya"
-                android:text="--:--"
-                android:textSize="@dimen/sp30"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/name_lokasi"
-                android:layout_alignParentBottom="true"
-                android:text="Lokasi Kota Anda : "
-                android:textSize="22sp"
-                android:layout_marginBottom="@dimen/dimen30"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/value_lokasi"
-                android:layout_alignParentBottom="true"
-                android:layout_toRightOf="@id/name_lokasi"
-                android:text="----------"
-                android:textSize="22sp"
-                android:layout_marginBottom="@dimen/dimen30"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jadwal Sholat"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/sp22"
+                    android:alpha="0.9"
+                    android:id="@+id/name_jadwal"
+                    android:layout_marginTop="@dimen/dimen10"
+                    android:textColor="@color/cultured"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tanggal_jadwal"
+                    android:layout_below="@id/name_jadwal"
+                    android:layout_centerHorizontal="true"
+                    android:text="Tanggal"
+                    android:alpha="0.9"
+                    android:layout_marginTop="@dimen/dimen10"
+                    android:textColor="@color/cultured"
+                    android:textSize="@dimen/sp22"
+                    android:textStyle="bold"
+                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/value_lokasi"
+                        android:layout_below="@id/tanggal_jadwal"
+                        android:layout_centerHorizontal="true"
+                        android:text="----------"
+                        android:alpha="0.9"
+                        android:textSize="@dimen/sp22"
+                        android:textColor="@color/cultured"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/dimen10"
+                        android:layout_marginBottom="@dimen/dimen30"
+                        />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:id="@id/layoutbawah_jadwal"
+                android:layout_below="@id/cardview_atas_jadwal"
+                android:layout_marginLeft="@dimen/dimen10"
+                android:layout_marginRight="@dimen/dimen10"
+                android:layout_marginTop="@dimen/dimen10"
+                android:paddingLeft="@dimen/dimen10"
+                android:paddingRight="@dimen/dimen10"
                 />
 
 
 
 
-        </RelativeLayout>
+
+
 
     </RelativeLayout>
 

@@ -47,4 +47,5 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.8.0'
     implementation 'io.ipgeolocation:ipgeolocation:1.0.12'
     implementation 'com.batoulapps.adhan:adhan:1.2.1'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

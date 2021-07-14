@@ -3,11 +3,16 @@ package com.ihsan946.sholatq.menufragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.batoulapps.adhan.CalculationMethod;
@@ -17,6 +22,7 @@ import com.batoulapps.adhan.Madhab;
 import com.batoulapps.adhan.PrayerTimes;
 import com.batoulapps.adhan.data.DateComponents;
 import com.ihsan946.sholatq.R;
+import com.ihsan946.sholatq.adapter.JadwalsholatAdapter;
 import com.ihsan946.sholatq.api.ApiEndpointJadwal;
 import com.ihsan946.sholatq.api.ApiEndpointLokasi;
 import com.ihsan946.sholatq.api.ApiServiceJadwal;
@@ -24,7 +30,9 @@ import com.ihsan946.sholatq.api.ApiServiceLokasi;
 import com.ihsan946.sholatq.model.ApimodelJadwal;
 import com.ihsan946.sholatq.model.ApimodelLokasi;
 import com.ihsan946.sholatq.model.DatetimeModel;
+import com.ihsan946.sholatq.model.Sholatqmodel;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -45,8 +53,10 @@ import retrofit2.Response;
 public class JadwalFragment extends Fragment {
 
 
-    TextView shubuh,dzuhur,asr,maghrib,isya,lokasi;
-    String time_shubuh,time_dzuhur,time_asr,time_maghrib,time_isya;
+    TextView lokasi,tanggal;
+    String time_shubuh,time_dzuhur,time_asr,time_maghrib,time_isya,tanggal_terkini;
+    RecyclerView layout_bawah_jadwal;
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -94,24 +104,66 @@ public class JadwalFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_jadwal, container, false);
+        final FragmentActivity fragment = getActivity();
 //
 
 //
         getJadwalSholat();
 //
-        shubuh = view.findViewById(R.id.value_shubuh);
-        dzuhur = view.findViewById(R.id.value_dzuhur);
-        asr = view.findViewById(R.id.value_ashar);
-        maghrib = view.findViewById(R.id.value_maghrib);
-        isya = view.findViewById(R.id.value_isya);
-        lokasi = view.findViewById(R.id.value_lokasi);
+//        shubuh = view.findViewById(R.id.value_shubuh);
+//        dzuhur = view.findViewById(R.id.value_dzuhur);
+//        asr = view.findViewById(R.id.value_ashar);
+//        maghrib = view.findViewById(R.id.value_maghrib);
+//        isya = view.findViewById(R.id.value_isya);
 
-        shubuh.setText(time_shubuh);
-        dzuhur.setText(time_dzuhur);
-        asr.setText(time_asr);
-        maghrib.setText(time_maghrib);
-        isya.setText(time_isya);
+//  layout atas
+
+        lokasi = view.findViewById(R.id.value_lokasi);
+        tanggal = view.findViewById(R.id.tanggal_jadwal);
         lokasi.setText(Preference.getNamaKota(getActivity()));
+        tanggal.setText(tanggal_terkini);
+        ImageView image = view.findViewById(R.id.gambaratas_jadwal);
+        Picasso.get().load("https://picsum.photos/400/162/?blur=3").into(image);
+
+//
+
+//        shubuh.setText(time_shubuh);
+//        dzuhur.setText(time_dzuhur);
+//        asr.setText(time_asr);
+//        maghrib.setText(time_maghrib);
+//        isya.setText(time_isya);
+
+//        layout bawah
+
+        layout_bawah_jadwal = view.findViewById(R.id.layoutbawah_jadwal);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(fragment, LinearLayoutManager.HORIZONTAL, false);
+        layout_bawah_jadwal.setLayoutManager(layoutManager);
+        Sholatqmodel model = new Sholatqmodel();
+
+        String [] name_jadwal = {
+                "Shubuh","Dzuhur","Ashar","Maghrib","Isya"
+        };
+        String [] jadwal = {
+                time_shubuh,time_dzuhur,time_asr,time_maghrib,time_isya
+        };
+
+        model.setName_jadwalsholat(name_jadwal);
+        model.setJadwal_sholat(jadwal);
+        final JadwalsholatAdapter jadwalsholatAdapter = new JadwalsholatAdapter(model.getName_jadwalsholat(), model.getJadwal_sholat(), fragment);
+        layout_bawah_jadwal.setAdapter(jadwalsholatAdapter);
+
+
+
+
+
+
+
+
+
+
+//
+
+//
 
 
 //
@@ -129,6 +181,7 @@ public class JadwalFragment extends Fragment {
 
 
         DateComponents date = DateComponents.from(new Date());
+        Date tanggal = new Date();
 
         CalculationParameters params = CalculationMethod.SINGAPORE.getParameters();
         params.madhab = Madhab.SHAFI;
@@ -138,12 +191,14 @@ public class JadwalFragment extends Fragment {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm ", Locale.UK);
         formatter.setTimeZone(TimeZone.getTimeZone("Asia/Jakarta"));
 
+        SimpleDateFormat formatTanggal = new SimpleDateFormat("dd-MMMM-YYYY");
 //        set value
         time_shubuh = String.valueOf(formatter.format(prayer.fajr));
         time_dzuhur = String.valueOf(formatter.format(prayer.dhuhr));
         time_asr = String.valueOf(formatter.format(prayer.asr));
         time_maghrib = String.valueOf(formatter.format(prayer.maghrib));
         time_isya = String.valueOf(formatter.format(prayer.isha));
+        tanggal_terkini = formatTanggal.format(tanggal).toString();
 //
 
 

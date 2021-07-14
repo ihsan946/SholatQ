@@ -7,11 +7,11 @@ import java.util.List;
 
 public class DatetimeModel {
 
-    @SerializedName("datetime")
-    public times2Model [] datetime;
-
-    @SerializedName("date")
-    public String [] date;
+//    @SerializedName("datetime")
+//    public times2Model [] datetime;
+//
+//    @SerializedName("date")
+//    public String [] date;
 
     //    @SerializedName("location")
 //    public List<String> location = new ArrayList<>();
