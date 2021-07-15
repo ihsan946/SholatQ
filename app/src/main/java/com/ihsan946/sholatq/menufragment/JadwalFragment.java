@@ -7,12 +7,10 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.batoulapps.adhan.CalculationMethod;
@@ -23,27 +21,14 @@ import com.batoulapps.adhan.PrayerTimes;
 import com.batoulapps.adhan.data.DateComponents;
 import com.ihsan946.sholatq.R;
 import com.ihsan946.sholatq.adapter.JadwalsholatAdapter;
-import com.ihsan946.sholatq.api.ApiEndpointJadwal;
-import com.ihsan946.sholatq.api.ApiEndpointLokasi;
-import com.ihsan946.sholatq.api.ApiServiceJadwal;
-import com.ihsan946.sholatq.api.ApiServiceLokasi;
-import com.ihsan946.sholatq.model.ApimodelJadwal;
-import com.ihsan946.sholatq.model.ApimodelLokasi;
-import com.ihsan946.sholatq.model.DatetimeModel;
 import com.ihsan946.sholatq.model.Sholatqmodel;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -123,9 +108,9 @@ public class JadwalFragment extends Fragment {
         lokasi.setText(Preference.getNamaKota(getActivity()));
         tanggal.setText(tanggal_terkini);
         ImageView image = view.findViewById(R.id.gambaratas_jadwal);
-        Picasso.get().load("https://picsum.photos/400/162/?blur=3").into(image);
+        Picasso.get().load("https://random.imagecdn.app/400/162").into(image);
 
-//
+//400/162
 
 //        shubuh.setText(time_shubuh);
 //        dzuhur.setText(time_dzuhur);

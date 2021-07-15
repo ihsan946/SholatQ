@@ -13,6 +13,7 @@ public class Preference {
     private static String NAMA_KOTA = "NAMA_KOTA";
     private static String LATITUDE = "LATITUDE";
     private static String LONGITUDE = "LONGITUDE";
+    private static String QUOTES = "QUOTES";
 
     private Context context;
 
@@ -29,7 +30,7 @@ public class Preference {
         editor.apply();
     }
 
-    public static String getIpDevice(Context context) {
+    public static String getIpPreferences(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
         return preferences.getString(IP_DEVICE, Utilstatic.DEFAULT_STRING);
     }
@@ -80,8 +81,22 @@ public class Preference {
         editor.apply();
     }
 
+    public static String getQUOTES(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        return preferences.getString(QUOTES, Utilstatic.DEFAULT_STRING);
+    }
 
-//
+    public static void setQUOTES(Context context,String quotes) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString(QUOTES,quotes);
+        editor.apply();
+
+
+    }
+
+    //
 
 
 }

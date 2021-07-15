@@ -5,44 +5,33 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
-import androidx.core.widget.TextViewOnReceiveContentListener;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.ihsan946.sholatq.R;
-import com.ihsan946.sholatq.api.ApiEndpointJadwal;
-import com.ihsan946.sholatq.api.ApiEndpointLokasi;
-import com.ihsan946.sholatq.api.ApiServiceJadwal;
-import com.ihsan946.sholatq.api.ApiServiceLokasi;
 import com.ihsan946.sholatq.menufragment.JadwalFragment;
-import com.ihsan946.sholatq.model.ApimodelJadwal;
-import com.ihsan946.sholatq.model.ApimodelLokasi;
-import com.ihsan946.sholatq.model.DatetimeModel;
 import com.ihsan946.sholatq.model.Sholatqmodel;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Fragment fragment;
+    Activity activity;
     FragmentTransaction transaction;
     NavigationView navigasi;
     DrawerLayout drawer;
     Sholatqmodel model;
-    String Hasil;
+    TextView textView;
+
 
 
     @Override
@@ -88,7 +77,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 //        get ip device
 
-        getLokasi();
+//        getLokasi();
+        textView = findViewById(R.id.text_utama);
+
+        textView.setText(Preference.getQUOTES(getBaseContext()));
 
 
 
@@ -106,6 +98,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu1:
                 fragment = new JadwalFragment();
                 break;
+            case R.id.menu3:
+                Intent intent = new Intent(this,MainActivity.class);
+                startActivity(intent);
+                break;
+
 
 
         }
@@ -115,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.replace(R.id.flayout_menu, fragment);
             transaction.commit();
         }
+
         drawer.closeDrawers();
     }
 
@@ -134,71 +132,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    public void getLokasi(){
-        ApiServiceLokasi api = ApiEndpointLokasi.getClient().create(ApiServiceLokasi.class);
 
-        Call<ApimodelLokasi> call = api.getLokasi(Preference.getIpDevice(getBaseContext()));
-        call.enqueue(new Callback<ApimodelLokasi>() {
-            @Override
-            public void onResponse(Call<ApimodelLokasi> call, Response<ApimodelLokasi> response) {
-              Hasil = response.body().hasil;
-
-              getCity();
-
-            }
-
-            @Override
-            public void onFailure(Call<ApimodelLokasi> call, Throwable t) {
-
-            }
-        });
-
-
-    }
-
-
-
-    public void getCity(){
-        String [] pecahkata = Hasil.split("\\n");
-
-//        Log.d("Pecah",pecahkata[0]);
-//        Log.d("Pecah",pecahkata[1]);
-//        Log.d("Pecah",pecahkata[2]);
-//        Log.d("Pecah",pecahkata[3]);
-//        Log.d("Pecah",pecahkata[4]);
-//        Log.d("Pecah",pecahkata[5]);
-
-        String hasil_pecahkota = pecahkata[3];
-        String hasil_pecahlatitude = pecahkata[4];
-        String hasil_pecahlongitude = pecahkata[5];
-
-        String [] pecahlatitude = hasil_pecahlatitude.split("\\s");
-        String [] pecahlongitude = hasil_pecahlongitude.split("\\s");
-        String [] pecahkota = hasil_pecahkota.split("\\s");
-
-//        Log.d("PecahKota",pecahlatitude[0]);
-//        Log.d("PecahKota",pecahlatitude[1]);
-//        Log.d("PecahKota",pecahlongitude[0]);
-//        Log.d("PecahKota",pecahlongitude[1]);
-
-        String Latitude = pecahlatitude[1];
-        String Longitude = pecahlongitude[1];
-        String Kota = pecahkota[1];
-
-//
-//
-        Preference.setLatitudePreferences(getBaseContext(),Latitude);
-        Preference.setLongitudePreferences(getBaseContext(),Longitude);
-        Preference.setKotaPreferences(getBaseContext(),Kota);
-
-//        String latitude,longitude;
-//        latitude = ip.getGeolocation().getLatitude();
-//        longitude = ip.getGeolocation().getLongitude();
-
-//        Preference.setLatitudePreferences(getBaseContext(),latitude);
-//        Preference.setLongitudePreferences(getBaseContext(),longitude);
-
-    }
 
 
 
