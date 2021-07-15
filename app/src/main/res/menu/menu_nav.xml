@@ -8,9 +8,16 @@
             android:title="Jadwal Sholat" />
         <item
             android:id="@+id/menu2"
-            android:title="Kiblat" />
+            android:title="Hitung Dzikir" />
+    </group>
+    <group
+        android:id="@+id/group2_menu"
+        android:checkableBehavior="single"
+        >
         <item
             android:id="@+id/menu3"
-            android:title="Setting" />
+            android:title="Kembali ke Home" />
+
+
     </group>
 </menu>

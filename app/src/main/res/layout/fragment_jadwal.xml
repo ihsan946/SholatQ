@@ -17,46 +17,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:id="@+id/cardview_atas_jadwal"
-                android:layout_marginLeft="@dimen/dimen10"
-                android:layout_marginRight="@dimen/dimen10"
+
+
                 android:layout_marginBottom="@dimen/dimen10"
                 >
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:id="@+id/layoutatas_jadwal"
                     android:layout_height="150dp"
                     >
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/gambaratas_jadwal"
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/gambaratas_jadwal"
 
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Jadwal Sholat"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="@dimen/sp22"
-                    android:alpha="0.9"
-                    android:id="@+id/name_jadwal"
-                    android:layout_marginTop="@dimen/dimen10"
-                    android:textColor="@color/cultured"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tanggal_jadwal"
-                    android:layout_below="@id/name_jadwal"
-                    android:layout_centerHorizontal="true"
-                    android:text="Tanggal"
-                    android:alpha="0.9"
-                    android:layout_marginTop="@dimen/dimen10"
-                    android:textColor="@color/cultured"
-                    android:textSize="@dimen/sp22"
-                    android:textStyle="bold"
-                    />
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jadwal Sholat"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="@dimen/sp22"
+                        android:alpha="0.9"
+                        android:id="@+id/name_jadwal"
+                        android:layout_marginTop="@dimen/dimen10"
+                        android:textColor="@color/cultured"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tanggal_jadwal"
+                        android:layout_below="@id/name_jadwal"
+                        android:layout_centerHorizontal="true"
+                        android:text="Tanggal"
+                        android:alpha="0.9"
+                        android:layout_marginTop="@dimen/dimen10"
+                        android:textColor="@color/cultured"
+                        android:textSize="@dimen/sp22"
+                        android:textStyle="bold"
+                        />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

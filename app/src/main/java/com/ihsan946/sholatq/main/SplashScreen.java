@@ -101,9 +101,6 @@ public class SplashScreen extends AppCompatActivity {
                     Hasil = response.body().hasil;
                 }
 
-
-
-
             }
 
             @Override

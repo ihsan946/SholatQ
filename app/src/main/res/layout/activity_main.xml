@@ -6,6 +6,7 @@
     android:background="@color/jet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/dimen10"
     tools:context=".main.MainActivity">
 
     <TextView
@@ -14,6 +15,7 @@
         android:text="Mohon Tunggu !!!"
         android:id="@+id/text_utama"
         android:gravity="center"
+        android:textAlignment="center"
         android:textColor="@color/white"
          />
     

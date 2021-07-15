@@ -108,7 +108,7 @@ public class JadwalFragment extends Fragment {
         lokasi.setText(Preference.getNamaKota(getActivity()));
         tanggal.setText(tanggal_terkini);
         ImageView image = view.findViewById(R.id.gambaratas_jadwal);
-        Picasso.get().load("https://random.imagecdn.app/400/162").into(image);
+        Picasso.get().load("https://picsum.photos/400/162?blur=3").into(image);
 
 //400/162
 
