@@ -15,10 +15,11 @@
         android:text="Mohon Tunggu !!!"
         android:id="@+id/text_utama"
         android:gravity="center"
+        android:padding="@dimen/dimen10"
         android:textAlignment="center"
         android:textColor="@color/white"
-         />
-    
+        />
+
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -34,7 +35,6 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/dark_liver"
                 app:contentInsetStartWithNavigation="0dp"
-
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:titleTextColor="@color/white" />
         </com.google.android.material.appbar.AppBarLayout>

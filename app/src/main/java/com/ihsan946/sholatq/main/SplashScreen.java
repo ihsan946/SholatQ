@@ -94,12 +94,12 @@ public class SplashScreen extends AppCompatActivity {
         call.enqueue(new Callback<ApimodelLokasi>() {
             @Override
             public void onResponse(Call<ApimodelLokasi> call, Response<ApimodelLokasi> response) {
-                if (response.body().hasil.equals("API count exceeded - Increase Quota with Membership")) {
-
-                    Log.d("Pesan", "Failure with api");
-                } else{
-                    Hasil = response.body().hasil;
-                }
+//                Log.d("Pesan", response.body().kota);
+//                Log.d("Pesan", response.body().latitude);
+//                Log.d("Pesan", response.body().longitude);
+                Preference.setKotaPreferences(getBaseContext(),response.body().kota);
+                Preference.setLatitudePreferences(getBaseContext(),response.body().latitude);
+                Preference.setLongitudePreferences(getBaseContext(),response.body().longitude);
 
             }
 
@@ -108,7 +108,7 @@ public class SplashScreen extends AppCompatActivity {
                 Log.d("Pesan", t.toString());
             }
         });
-
+//
 
     }
 
@@ -166,7 +166,6 @@ public class SplashScreen extends AppCompatActivity {
                 Quotes = response.body().quotesmodel.text_quotes;
                 Preference.setQUOTES(getBaseContext(), Quotes);
 
-
             }
 
             @Override
@@ -178,6 +177,5 @@ public class SplashScreen extends AppCompatActivity {
 //        Log.v("Hasil",t.toString());
 
     }
-
 
 }

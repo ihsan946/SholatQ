@@ -23,6 +23,10 @@ import com.ihsan946.sholatq.menufragment.JadwalFragment;
 import com.ihsan946.sholatq.model.Sholatqmodel;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Fragment fragment;
@@ -131,6 +135,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void notifSholat(){
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm ", Locale.UK);
+        String jam_sekarang = formatter.format(date);
+
+
+
+
     }
 
 

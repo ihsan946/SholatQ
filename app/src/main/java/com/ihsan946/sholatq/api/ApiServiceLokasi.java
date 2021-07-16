@@ -9,7 +9,7 @@ import retrofit2.http.Path;
 public interface ApiServiceLokasi {
 
     //
-    @GET("/domain/geoip/{ip}")
+    @GET("/{ip}/json")
     Call<ApimodelLokasi> getLokasi(@Path(value = "ip",encoded = true) String parameter);
 
 //

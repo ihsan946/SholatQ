@@ -1,14 +1,18 @@
 package com.ihsan946.sholatq.menufragment;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.fragment.app.Fragment;
 
 import com.ihsan946.sholatq.R;
 
@@ -24,6 +28,10 @@ public class DzikirFragment extends Fragment {
     TextView dzikir;
     Button tambah_dzikir, reset_dzikir;
     int count = 0;
+
+
+    private final String CHANNEL_ID = "notif_sholat";
+    private final int NOTIFICATION_ID = 999;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -86,19 +94,59 @@ public class DzikirFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 resetDzikir();
+                ;
             }
         });
         return view;
     }
 
-    public void hitungDzikir(){
+    public void hitungDzikir() {
 
         count++;
         banyak_dzikir = String.valueOf(count);
         dzikir.setText(banyak_dzikir);
+
+
+        String id = "notif_sholat";
+        String title = "SholatQ";
+//        NotificationManager notifManager = (NotificationManager) getSystemService();
+//
+//
+//
+
+
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(), CHANNEL_ID)
+//                .setSmallIcon(R.mipmap.ic_launcher)
+//                .setContentTitle("My notification")
+//                .setContentText("Hello World!")
+//                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+//                // Set the intent that will fire when the user taps the notification
+//                ;
+//        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getActivity());
+//        notificationManager.notify(NOTIFICATION_ID, builder.build());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+        }
+        String name = "SholatQ";
+        String description = "Yuk Sholat";
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+        channel.setDescription(description);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity())
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("My notification")
+                .setContentText("Hello World!")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                // Set the intent that will fire when the user taps the notification
+                ;
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getActivity());
+        notificationManager.notify(1,builder.build());
+
+
+
     }
 
-    public void resetDzikir(){
+    public void resetDzikir() {
         count = 0;
         banyak_dzikir = String.valueOf(count);
         dzikir.setText(banyak_dzikir);

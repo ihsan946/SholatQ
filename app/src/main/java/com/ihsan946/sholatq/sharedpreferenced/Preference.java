@@ -14,6 +14,11 @@ public class Preference {
     private static String LATITUDE = "LATITUDE";
     private static String LONGITUDE = "LONGITUDE";
     private static String QUOTES = "QUOTES";
+    private static String TIME_SHUBUH = "TIME_SHUBUH";
+    private static String TIME_DZUHUR = "TIME_DZUHUR";
+    private static String TIME_ASR = "TIME_ASR";
+    private static String TIME_MAGHRIB = "TIME_MAGHRIB";
+    private static String TIME_ISYA = "TIME_ISYA";
 
     private Context context;
 

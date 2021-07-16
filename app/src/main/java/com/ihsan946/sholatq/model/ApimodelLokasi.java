@@ -6,16 +6,14 @@ public class ApimodelLokasi {
 
 //
 //    //   get lokasi pengguna
-    @SerializedName("status")
-    public String status;
-    @SerializedName("query")
-    public String query;
-    @SerializedName("hasil")
-    public String hasil;
+    @SerializedName("city")
+    public String kota;
+    @SerializedName("latitude")
+    public String latitude;
+    @SerializedName("longitude")
+    public String longitude;
 
-    public String getHasil() {
-        return hasil;
-    }
+
 //
 //    //
 }
