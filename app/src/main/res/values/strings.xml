@@ -4,4 +4,8 @@
     <string name="close_drawer">Close Navigation drawer</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pesan">Assalamualaikum warahmatullahi wabarakatuh,</string>
+    <string name="pesan2">mudah - mudahan dengan aplikasi ini para pengguna menjadi lenih ingat kepada allah</string>
+    <string name="pesan3">untuk melaksanakan ibadahnya dan semoga aplikasi ini bermanfaat</string>
+    <string name="copyright">Salam Hangat, Developer (2021)</string>
 </resources>

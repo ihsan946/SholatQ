@@ -9,16 +9,7 @@
     android:padding="@dimen/dimen10"
     tools:context=".main.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mohon Tunggu !!!"
-        android:id="@+id/text_utama"
-        android:gravity="center"
-        android:padding="@dimen/dimen10"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        />
+
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -38,12 +29,109 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:titleTextColor="@color/white" />
         </com.google.android.material.appbar.AppBarLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="150dp"
+            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/background_quotes"
+                android:background="@color/zomp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/name_quotes_main"
+                android:layout_centerHorizontal="true"
+                android:text="Quotes of Today"
+                android:textColor="@color/black"
+                android:layout_marginTop="50dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mohon Tunggu !!!"
+                android:id="@+id/text_utama"
+                android:layout_below="@id/name_quotes_main"
+                android:padding="@dimen/dimen20"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen300"
+                android:layout_marginTop="@dimen/dimen10"
+                android:layout_below="@id/background_quotes"
+                android:background="@color/cadet_blue"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_utama"
+                android:id="@+id/name_pesan"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:text="Pesan Untuk Pengguna"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name_pesan"
+                android:layout_marginLeft="@dimen/dimen30"
+                android:layout_marginStart="@dimen/dimen30"
+                android:text="@string/pesan"
+                android:id="@+id/pesan1"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/dimen10"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pesan1"
+                android:layout_marginLeft="@dimen/dimen30"
+                android:layout_marginStart="@dimen/dimen30"
+                android:text="@string/pesan2"
+                android:id="@+id/pesan2"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/dimen10"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pesan2"
+                android:layout_marginLeft="@dimen/dimen30"
+                android:layout_marginStart="@dimen/dimen30"
+                android:text="@string/pesan3"
+                android:id="@+id/pesan3"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/dimen10"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pesan3"
+                android:layout_marginLeft="@dimen/dimen30"
+                android:layout_marginStart="@dimen/dimen30"
+                android:text="@string/copyright"
+                android:id="@+id/copyright"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/dimen10"
+                />
 
+
+        </RelativeLayout>
         <FrameLayout
             android:id="@+id/flayout_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" >
+
+        </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_menu"
@@ -53,7 +141,7 @@
         android:background="@color/bone"
         android:fitsSystemWindows="false"
         app:headerLayout="@layout/header_nav"
-        android:padding="@dimen/dimen10"
+        android:padding="5dp"
         app:menu="@menu/menu_nav" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -1,17 +1,15 @@
 package com.ihsan946.sholatq.menufragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.batoulapps.adhan.CalculationMethod;
 import com.batoulapps.adhan.CalculationParameters;
@@ -23,7 +21,6 @@ import com.ihsan946.sholatq.R;
 import com.ihsan946.sholatq.adapter.JadwalsholatAdapter;
 import com.ihsan946.sholatq.model.Sholatqmodel;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
-import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -107,8 +104,8 @@ public class JadwalFragment extends Fragment {
         tanggal = view.findViewById(R.id.tanggal_jadwal);
         lokasi.setText(Preference.getNamaKota(getActivity()));
         tanggal.setText(tanggal_terkini);
-        ImageView image = view.findViewById(R.id.gambaratas_jadwal);
-        Picasso.get().load("https://picsum.photos/500/170?grayscale").into(image);
+
+
 
 //400/162
 

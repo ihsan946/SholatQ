@@ -11,7 +11,8 @@
     android:layout_width="match_parent"
     android:layout_height="600dp"
     android:layout_gravity="center"
-    android:layout_margin="@dimen/dimen10"
+    android:layout_marginRight="@dimen/dimen20"
+    android:layout_marginLeft="@dimen/dimen20"
     android:background="@drawable/border_dzikir"
     android:orientation="vertical"
     >
@@ -20,7 +21,7 @@
         android:layout_height="wrap_content"
         android:text="Dzikir Yuk"
         android:textSize="35sp"
-        android:textColor="@color/dark_liver"
+        android:textColor="@color/bone"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/dimen30"
         />
@@ -34,34 +35,35 @@
         android:id="@+id/tampil_hitung_dzikir"
         android:gravity="center"
         android:textSize="60sp"
-        android:textColor="@color/dark_liver"
+        android:textColor="@color/bone"
         />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="60dp"
+        android:paddingLeft="50dp"
 
         >
         <Button
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:background="@color/black"
+            android:background="@color/orange_pantone"
             android:textColor="@color/bone"
             android:id="@+id/tambah_dzikir"
             android:text="Tambah"
-            android:layout_margin="@dimen/dimen30"
+            android:layout_marginTop="@dimen/dimen30"
+            android:layout_marginLeft="@dimen/dimen20"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:background="@color/black"
+            android:background="@color/blue_violet"
             android:textColor="@color/bone"
             android:id="@+id/reset_dzikir"
             android:layout_toRightOf="@id/tambah_dzikir"
             android:text="RESET"
-            android:layout_marginLeft="@dimen/dimen20"
-            android:layout_marginTop="30dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="@dimen/dimen30"
             />
 
     </RelativeLayout>

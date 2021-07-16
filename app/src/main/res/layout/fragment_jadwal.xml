@@ -17,8 +17,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:id="@+id/cardview_atas_jadwal"
-
-
                 android:layout_marginBottom="@dimen/dimen10"
                 >
 
@@ -31,6 +29,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/gambaratas_jadwal"
+                        android:background="@drawable/background_jadwal_sholat"
 
                         />
                     <TextView
@@ -42,7 +41,7 @@
                         android:alpha="0.9"
                         android:id="@+id/name_jadwal"
                         android:layout_marginTop="@dimen/dimen10"
-                        android:textColor="@color/black"
+                        android:textColor="@color/bone"
                         android:textStyle="bold"
                         />
                     <TextView
@@ -54,7 +53,7 @@
                         android:text="Tanggal"
                         android:alpha="0.9"
                         android:layout_marginTop="@dimen/dimen10"
-                        android:textColor="@color/black"
+                        android:textColor="@color/bone"
                         android:textSize="@dimen/sp22"
                         android:textStyle="bold"
                         />
@@ -67,7 +66,7 @@
                         android:text="----------"
                         android:alpha="0.9"
                         android:textSize="@dimen/sp22"
-                        android:textColor="@color/black"
+                        android:textColor="@color/bone"
                         android:textStyle="bold"
                         android:layout_marginTop="@dimen/dimen10"
                         android:layout_marginBottom="@dimen/dimen30"
