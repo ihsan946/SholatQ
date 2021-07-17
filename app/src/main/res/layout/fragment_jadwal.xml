@@ -3,16 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/jet"
+    android:background="@color/bone"
     tools:context=".menufragment.JadwalFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/dimen10"
+        android:layout_height="600dp"
+        android:paddingLeft="@dimen/dimen10"
+        android:paddingRight="@dimen/dimen10"
+        android:layout_gravity="center"
         >
-
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_bawah"
+            >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
@@ -77,15 +83,20 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:id="@id/layoutbawah_jadwal"
+                android:layout_height="270dp"
+                android:id="@+id/layout_bawah_jadwal"
+                android:background="@drawable/border_jadwal"
                 android:layout_below="@id/cardview_atas_jadwal"
                 android:layout_marginLeft="@dimen/dimen10"
                 android:layout_marginRight="@dimen/dimen10"
-                android:layout_marginTop="@dimen/dimen10"
+                android:layout_marginTop="50dp"
                 android:paddingLeft="@dimen/dimen10"
                 android:paddingRight="@dimen/dimen10"
+                android:paddingBottom="@dimen/dimen10"
                 />
+
+        </RelativeLayout>
+
 
 
 

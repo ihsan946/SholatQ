@@ -1,7 +1,6 @@
 package com.ihsan946.sholatq.menufragment;
 
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -94,7 +93,7 @@ public class DzikirFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 resetDzikir();
-                ;
+
             }
         });
         return view;
@@ -109,8 +108,7 @@ public class DzikirFragment extends Fragment{
 //
         String name = "SholatQ";
         String description = "Yuk Sholat";
-        int importance = NotificationManager.IMPORTANCE_DEFAULT;
-//
+
         mNotificationUtils = new NotificationUtils(getActivity());
         Notification.Builder nb = mNotificationUtils.
                 getAndroidChannelNotification(name,description);

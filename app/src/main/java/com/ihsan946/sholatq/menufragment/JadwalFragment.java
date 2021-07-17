@@ -117,7 +117,7 @@ public class JadwalFragment extends Fragment {
 
 //        layout bawah
 
-        layout_bawah_jadwal = view.findViewById(R.id.layoutbawah_jadwal);
+        layout_bawah_jadwal = view.findViewById(R.id.layout_bawah_jadwal);
         LinearLayoutManager layoutManager = new LinearLayoutManager(fragment, LinearLayoutManager.HORIZONTAL, false);
         layout_bawah_jadwal.setLayoutManager(layoutManager);
         Sholatqmodel model = new Sholatqmodel();
@@ -128,10 +128,18 @@ public class JadwalFragment extends Fragment {
         String [] jadwal = {
                 time_shubuh,time_dzuhur,time_asr,time_maghrib,time_isya
         };
+        int [] background = {
+                R.drawable.shubuh
+                ,R.drawable.dzuhur
+                ,R.drawable.asr
+                ,R.drawable.maghrib
+                ,R.drawable.isya
+        };
 
         model.setName_jadwalsholat(name_jadwal);
         model.setJadwal_sholat(jadwal);
-        final JadwalsholatAdapter jadwalsholatAdapter = new JadwalsholatAdapter(model.getName_jadwalsholat(), model.getJadwal_sholat(), fragment);
+        model.setBackground_jadwal(background);
+        final JadwalsholatAdapter jadwalsholatAdapter = new JadwalsholatAdapter(model.getName_jadwalsholat(), model.getJadwal_sholat(), model.getBackground_jadwal(), fragment);
         layout_bawah_jadwal.setAdapter(jadwalsholatAdapter);
 
 
@@ -181,6 +189,12 @@ public class JadwalFragment extends Fragment {
         time_maghrib = String.valueOf(formatter.format(prayer.maghrib));
         time_isya = String.valueOf(formatter.format(prayer.isha));
         tanggal_terkini = formatTanggal.format(tanggal).toString();
+
+        Preference.setTimeShubuhPreference(getActivity(),time_shubuh);
+        Preference.setTimeDzuhurPreference(getActivity(),time_dzuhur);
+        Preference.setTimeAsrPreference(getActivity(),time_asr);
+        Preference.setTimeMaghribPreference(getActivity(),time_maghrib);
+        Preference.setTimeIsyaPreference(getActivity(),time_isya);
 //
 
 

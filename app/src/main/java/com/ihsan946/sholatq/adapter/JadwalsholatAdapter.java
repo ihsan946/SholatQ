@@ -11,19 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ihsan946.sholatq.R;
 
-import java.util.List;
-
 public class JadwalsholatAdapter extends RecyclerView.Adapter<JadwalsholatAdapter.MyHolder>{
 
 
     String [] name_jadwal_sholat;
     String [] jadwal_sholat ;
+    int [] background;
         Context ctx;
 
 
-    public JadwalsholatAdapter(String[] name_jadwal_sholat, String[] jadwal_sholat, Context ctx) {
+    public JadwalsholatAdapter(String[] name_jadwal_sholat, String[] jadwal_sholat, int[] background, Context ctx) {
         this.name_jadwal_sholat = name_jadwal_sholat;
         this.jadwal_sholat = jadwal_sholat;
+        this.background = background;
         this.ctx = ctx;
     }
 
@@ -39,6 +39,8 @@ public class JadwalsholatAdapter extends RecyclerView.Adapter<JadwalsholatAdapte
         public void onBindViewHolder(MyHolder holder, final int position) {
             holder.name_jadwalsholat.setText(name_jadwal_sholat[position]);
             holder.value_jadwalsholat.setText(jadwal_sholat[position]);
+            holder.background.setImageResource(background[position]);
+
 
 
 
@@ -53,12 +55,14 @@ public class JadwalsholatAdapter extends RecyclerView.Adapter<JadwalsholatAdapte
 
         public class MyHolder extends RecyclerView.ViewHolder {
             TextView name_jadwalsholat,value_jadwalsholat;
+            ImageView background;
 
             public MyHolder(View v)
             {
                 super(v);
                 name_jadwalsholat = v.findViewById(R.id.name_jadwal_sholat);
                 value_jadwalsholat = v.findViewById(R.id.value_jadwal_sholat);
+                background = v.findViewById(R.id.background_jadwal);
 
 
             }

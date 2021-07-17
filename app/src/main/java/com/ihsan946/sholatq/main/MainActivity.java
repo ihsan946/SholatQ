@@ -1,5 +1,13 @@
 package com.ihsan946.sholatq.main;
 
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,19 +17,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-
 import com.google.android.material.navigation.NavigationView;
 import com.ihsan946.sholatq.R;
 import com.ihsan946.sholatq.menufragment.DzikirFragment;
 import com.ihsan946.sholatq.menufragment.JadwalFragment;
 import com.ihsan946.sholatq.model.Sholatqmodel;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
+import com.ihsan946.sholatq.utils.BroadcastReceiverSholat;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawer;
     Sholatqmodel model;
     TextView textView;
+    private PendingIntent pendingIntent;
+    private static final int ALARM_REQUEST_CODE = 100;
 
 
 
@@ -87,12 +91,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         textView.setText(Preference.getQUOTES(getBaseContext()));
 
-
-
-
 //
-
-
+        Intent alarmIntent = new Intent(MainActivity.this, BroadcastReceiverSholat.class);
+        pendingIntent = PendingIntent.getBroadcast(MainActivity.this, ALARM_REQUEST_CODE, alarmIntent, 0);
 
     }
 

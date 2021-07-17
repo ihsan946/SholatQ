@@ -1,12 +1,12 @@
 package com.ihsan946.sholatq.main;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.ihsan946.sholatq.R;
 import com.ihsan946.sholatq.api.ApiEndpointLokasi;
@@ -15,12 +15,8 @@ import com.ihsan946.sholatq.api.ApiServiceLokasi;
 import com.ihsan946.sholatq.api.ApiServiceQuotes;
 import com.ihsan946.sholatq.model.ApimodelLokasi;
 import com.ihsan946.sholatq.model.ApimodelQuotes;
-import com.ihsan946.sholatq.model.Quotesmodel;
 import com.ihsan946.sholatq.model.Sholatqmodel;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import io.ipgeolocation.api.IPGeolocationAPI;
 import retrofit2.Call;
@@ -43,8 +39,8 @@ public class SplashScreen extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 //
-        getIp();
-        getLokasi();
+//        getIp();
+//        getLokasi();
         getTextQuotes();
 //
 

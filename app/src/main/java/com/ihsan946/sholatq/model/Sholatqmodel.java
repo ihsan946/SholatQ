@@ -1,13 +1,12 @@
 package com.ihsan946.sholatq.model;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Sholatqmodel {
 
     private String Ip_device;
     private String hasil;
     private String [] name_jadwalsholat;
     private String [] jadwal_sholat;
+    private int [] background_jadwal;
 
     public String getIp_device() {
         return Ip_device;
@@ -44,6 +43,13 @@ public class Sholatqmodel {
 
     //
 
+    public int[] getBackground_jadwal() {
+        return background_jadwal;
+    }
+
+    public void setBackground_jadwal(int[] background_jadwal) {
+        this.background_jadwal = background_jadwal;
+    }
 
 
 //

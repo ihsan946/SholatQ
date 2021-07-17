@@ -101,6 +101,71 @@ public class Preference {
 
     }
 
+//
+    public static String getTimeShubuhPreference(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        return preferences.getString(TIME_SHUBUH, Utilstatic.DEFAULT_STRING);
+    }
+
+    public static void setTimeShubuhPreference(Context context,String shubuh) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString(TIME_SHUBUH,shubuh);
+        editor.apply();
+    }
+//
+    public static String getTimeDzuhurPreference(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        return preferences.getString(TIME_DZUHUR, Utilstatic.DEFAULT_STRING);
+    }
+
+    public static void setTimeDzuhurPreference(Context context,String dzuhur) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString(TIME_DZUHUR,dzuhur);
+        editor.apply();
+    }
+//
+    public static String getTimeAsrPreference(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        return preferences.getString(TIME_ASR, Utilstatic.DEFAULT_STRING);
+    }
+
+    public static void setTimeAsrPreference(Context context,String asr) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString(TIME_ASR,asr);
+        editor.apply();
+    }
+//
+    public static String getTimeMaghribPreference(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        return preferences.getString(TIME_MAGHRIB, Utilstatic.DEFAULT_STRING);
+    }
+
+    public static void setTimeMaghribPreference(Context context,String maghrib) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString(TIME_MAGHRIB,maghrib);
+        editor.apply();
+    }
+//
+    public static String getTimeIsyaPreference(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        return preferences.getString(TIME_ISYA, Utilstatic.DEFAULT_STRING);
+    }
+
+    public static void setTimeIsyaPreference(Context context,String isya) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString(TIME_ISYA,isya);
+        editor.apply();
+    }
     //
 
 
