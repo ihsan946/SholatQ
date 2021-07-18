@@ -8,4 +8,10 @@
     <string name="pesan2">mudah - mudahan dengan aplikasi ini para pengguna menjadi lenih ingat kepada allah</string>
     <string name="pesan3">untuk melaksanakan ibadahnya dan semoga aplikasi ini bermanfaat</string>
     <string name="copyright">Salam Hangat, Developer (2021)</string>
+    <string name="judul_pengaturan">Pengaturan Notifikasi Jadwal Sholat</string>
+    <string name="setelan_shubuh">Jadwal Shubuh : </string>
+    <string name="setelan_dzuhur">Jadwal Dzuhur : </string>
+    <string name="setelan_asr">Jadwal Asr : </string>
+    <string name="setelan_maghrib">Jadwal Maghrib : </string>
+    <string name="setelan_isya">Jadwal Isya : </string>
 </resources>

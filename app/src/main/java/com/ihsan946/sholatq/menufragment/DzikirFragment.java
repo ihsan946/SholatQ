@@ -1,6 +1,5 @@
 package com.ihsan946.sholatq.menufragment;
 
-import android.app.Notification;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +26,6 @@ public class DzikirFragment extends Fragment{
     Button tambah_dzikir, reset_dzikir;
     int count = 0;
     private NotificationUtils mNotificationUtils;
-
 
     private final String CHANNEL_ID = "notif_sholat";
     private final int NOTIFICATION_ID = 999;
@@ -93,7 +91,6 @@ public class DzikirFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 resetDzikir();
-
             }
         });
         return view;
@@ -105,26 +102,13 @@ public class DzikirFragment extends Fragment{
         banyak_dzikir = String.valueOf(count);
         dzikir.setText(banyak_dzikir);
 
-//
-        String name = "SholatQ";
-        String description = "Yuk Sholat";
-
-        mNotificationUtils = new NotificationUtils(getActivity());
-        Notification.Builder nb = mNotificationUtils.
-                getAndroidChannelNotification(name,description);
-        mNotificationUtils.getManager().notify(101, nb.build());
-
-
-
-
-
-
     }
 
     public void resetDzikir() {
         count = 0;
         banyak_dzikir = String.valueOf(count);
         dzikir.setText(banyak_dzikir);
+
     }
 
 

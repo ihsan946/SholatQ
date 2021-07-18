@@ -21,9 +21,9 @@ import com.google.android.material.navigation.NavigationView;
 import com.ihsan946.sholatq.R;
 import com.ihsan946.sholatq.menufragment.DzikirFragment;
 import com.ihsan946.sholatq.menufragment.JadwalFragment;
+import com.ihsan946.sholatq.menufragment.SetelanFragment;
 import com.ihsan946.sholatq.model.Sholatqmodel;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
-import com.ihsan946.sholatq.utils.BroadcastReceiverSholat;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -92,8 +92,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         textView.setText(Preference.getQUOTES(getBaseContext()));
 
 //
-        Intent alarmIntent = new Intent(MainActivity.this, BroadcastReceiverSholat.class);
-        pendingIntent = PendingIntent.getBroadcast(MainActivity.this, ALARM_REQUEST_CODE, alarmIntent, 0);
+
+
+
+
 
     }
 
@@ -110,6 +112,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu3:
                 Intent intent = new Intent(this,MainActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.menu4:
+                fragment = new SetelanFragment();
                 break;
         }
 

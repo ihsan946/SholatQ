@@ -39,8 +39,8 @@ public class SplashScreen extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 //
-//        getIp();
-//        getLokasi();
+        getIp();
+        getLokasi();
         getTextQuotes();
 //
 

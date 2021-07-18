@@ -9,17 +9,25 @@ public class Preference {
 
     private static final String PREF_SESSION = "com.ihsan946.sholatq.session";
 
-    private static String IP_DEVICE = "IP_DEVICE";
-    private static String NAMA_KOTA = "NAMA_KOTA";
-    private static String LATITUDE = "LATITUDE";
-    private static String LONGITUDE = "LONGITUDE";
-    private static String QUOTES = "QUOTES";
-    private static String TIME_SHUBUH = "TIME_SHUBUH";
-    private static String TIME_DZUHUR = "TIME_DZUHUR";
-    private static String TIME_ASR = "TIME_ASR";
-    private static String TIME_MAGHRIB = "TIME_MAGHRIB";
-    private static String TIME_ISYA = "TIME_ISYA";
-
+    private static final String IP_DEVICE = "IP_DEVICE";
+    private static final String NAMA_KOTA = "NAMA_KOTA";
+    private static final String LATITUDE = "LATITUDE";
+    private static final String LONGITUDE = "LONGITUDE";
+//
+    private static final String QUOTES = "QUOTES";
+//
+    private static final String TIME_SHUBUH = "TIME_SHUBUH";
+    private static final String TIME_DZUHUR = "TIME_DZUHUR";
+    private static final String TIME_ASR = "TIME_ASR";
+    private static final String TIME_MAGHRIB = "TIME_MAGHRIB";
+    private static final String TIME_ISYA = "TIME_ISYA";
+//
+    private static final String STATUS_SHUBUH = "STATUS_SHUBUH";
+    private static final String STATUS_DZUHUR = "STATUS_DZUHUR";
+    private static final String STATUS_ASR = "STATUS_ASR";
+    private static final String STATUS_MAGHRIB = "STATUS_MAGHRIB";
+    private static final String STATUS_ISYA = "STATUS_ISYA";
+//
     private Context context;
 
     public Preference(Context context) {
@@ -166,7 +174,71 @@ public class Preference {
         editor.putString(TIME_ISYA,isya);
         editor.apply();
     }
-    //
+//
+    public static boolean getStatusShubuhPreference(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        return preferences.getBoolean(STATUS_SHUBUH, Utilstatic.DEFAULT_BOOLEAN);
+}
+
+    public static void setStatusShubuhPreference(Context context,boolean shubuh) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putBoolean(STATUS_SHUBUH,shubuh);
+        editor.apply();
+    }
+//
+    public static boolean getStatusDzuhurPreference(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        return preferences.getBoolean(STATUS_SHUBUH, Utilstatic.DEFAULT_BOOLEAN);
+}
+
+    public static void setStatusDzuhurPreference(Context context,boolean dzuhur) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putBoolean(STATUS_DZUHUR,dzuhur);
+        editor.apply();
+    }
+//
+    public static boolean getStatusAsrPreference(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        return preferences.getBoolean(STATUS_ASR, Utilstatic.DEFAULT_BOOLEAN);
+}
+
+    public static void setStatusAsrPreference(Context context,boolean asr) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putBoolean(STATUS_DZUHUR,asr);
+        editor.apply();
+    }
+//
+    public static boolean getStatusMaghribPreference(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        return preferences.getBoolean(STATUS_MAGHRIB, Utilstatic.DEFAULT_BOOLEAN);
+}
+
+    public static void setStatusMaghribPreference(Context context,boolean maghrib) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putBoolean(STATUS_MAGHRIB,maghrib);
+        editor.apply();
+    }
+//
+    public static boolean getStatusIsyaPreference(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        return preferences.getBoolean(STATUS_MAGHRIB, Utilstatic.DEFAULT_BOOLEAN);
+}
+
+    public static void setStatusIsyaPreference(Context context,boolean isya) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putBoolean(STATUS_ISYA,isya);
+        editor.apply();
+    }
 
 
 }

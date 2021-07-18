@@ -17,7 +17,9 @@
         <item
             android:id="@+id/menu3"
             android:title="Kembali ke Home" />
-
-
+        <item
+            android:id="@+id/menu4"
+            android:title="Pengaturan Notifikasi"
+            />
     </group>
 </menu>

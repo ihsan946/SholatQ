@@ -178,7 +178,7 @@ public class JadwalFragment extends Fragment {
 
         PrayerTimes prayer = new PrayerTimes(coordinates,date,params);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm ", Locale.UK);
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm", Locale.UK);
         formatter.setTimeZone(TimeZone.getTimeZone("Asia/Jakarta"));
 
         SimpleDateFormat formatTanggal = new SimpleDateFormat("dd-MMMM-YYYY");
