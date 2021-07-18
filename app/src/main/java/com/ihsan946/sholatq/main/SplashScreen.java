@@ -25,10 +25,8 @@ import retrofit2.Response;
 
 public class SplashScreen extends AppCompatActivity {
 
-    String Ip_device;
     Sholatqmodel model;
-    String Hasil;
-    String Quotes;
+    String Ip_device,Quotes;
 
 
     @Override
@@ -42,16 +40,14 @@ public class SplashScreen extends AppCompatActivity {
         getIp();
         getLokasi();
         getTextQuotes();
+
 //
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+            startActivity(intent);
+            finish();
 
-            }
         }, 4000);
 
 
@@ -79,7 +75,8 @@ public class SplashScreen extends AppCompatActivity {
 //        Log.d("IP","IP sama dengan : "+model.getIp_device());
         model = new Sholatqmodel();
         model.setIp_device(Ip_device);
-        Preference.setIpPreferences(getBaseContext(), model);
+        Preference.setIpPreferences(getApplicationContext(), model);
+
 
     }
 
@@ -160,7 +157,7 @@ public class SplashScreen extends AppCompatActivity {
             public void onResponse(Call<ApimodelQuotes> call, Response<ApimodelQuotes> response) {
                 Log.v("Hasil", response.body().quotesmodel.text_quotes);
                 Quotes = response.body().quotesmodel.text_quotes;
-                Preference.setQUOTES(getBaseContext(), Quotes);
+                Preference.setQUOTES(getApplicationContext(), Quotes);
 
             }
 
@@ -173,5 +170,7 @@ public class SplashScreen extends AppCompatActivity {
 //        Log.v("Hasil",t.toString());
 
     }
+
+
 
 }

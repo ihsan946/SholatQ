@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.ihsan946.sholatq.R;
-import com.ihsan946.sholatq.utils.NotificationUtils;
+import com.ihsan946.sholatq.utils.BroadcastReceiverSholat;
 
 
 /**
@@ -25,7 +25,7 @@ public class DzikirFragment extends Fragment{
     TextView dzikir;
     Button tambah_dzikir, reset_dzikir;
     int count = 0;
-    private NotificationUtils mNotificationUtils;
+    BroadcastReceiverSholat broadcastReceiverSholat;
 
     private final String CHANNEL_ID = "notif_sholat";
     private final int NOTIFICATION_ID = 999;
@@ -84,6 +84,8 @@ public class DzikirFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 hitungDzikir();
+                broadcastReceiverSholat = new BroadcastReceiverSholat();
+                broadcastReceiverSholat.setRepeatingAlarm(getActivity(),100,"04:41","Shubuh");
             }
         });
 

@@ -11,12 +11,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.batoulapps.adhan.CalculationMethod;
-import com.batoulapps.adhan.CalculationParameters;
-import com.batoulapps.adhan.Coordinates;
-import com.batoulapps.adhan.Madhab;
-import com.batoulapps.adhan.PrayerTimes;
-import com.batoulapps.adhan.data.DateComponents;
 import com.ihsan946.sholatq.R;
 import com.ihsan946.sholatq.adapter.JadwalsholatAdapter;
 import com.ihsan946.sholatq.model.Sholatqmodel;
@@ -24,8 +18,6 @@ import com.ihsan946.sholatq.sharedpreferenced.Preference;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,7 +28,8 @@ public class JadwalFragment extends Fragment {
 
 
     TextView lokasi,tanggal;
-    String time_shubuh,time_dzuhur,time_asr,time_maghrib,time_isya,tanggal_terkini;
+    String tanggal_terkini;
+    String time_shubuh,time_dzuhur,time_asr,time_maghrib,time_isya;
     RecyclerView layout_bawah_jadwal;
 
 
@@ -89,31 +82,21 @@ public class JadwalFragment extends Fragment {
         final FragmentActivity fragment = getActivity();
 //
 
-//
-        getJadwalSholat();
-//
-//        shubuh = view.findViewById(R.id.value_shubuh);
-//        dzuhur = view.findViewById(R.id.value_dzuhur);
-//        asr = view.findViewById(R.id.value_ashar);
-//        maghrib = view.findViewById(R.id.value_maghrib);
-//        isya = view.findViewById(R.id.value_isya);
-
 //  layout atas
-
         lokasi = view.findViewById(R.id.value_lokasi);
         tanggal = view.findViewById(R.id.tanggal_jadwal);
         lokasi.setText(Preference.getNamaKota(getActivity()));
+        Date tanggal_kini = new Date();
+        SimpleDateFormat formatTanggal = new SimpleDateFormat("dd-MMMM-YYYY");
+        tanggal_terkini = formatTanggal.format(tanggal_kini);
         tanggal.setText(tanggal_terkini);
 
-
-
-//400/162
-
-//        shubuh.setText(time_shubuh);
-//        dzuhur.setText(time_dzuhur);
-//        asr.setText(time_asr);
-//        maghrib.setText(time_maghrib);
-//        isya.setText(time_isya);
+        //
+        time_shubuh = Preference.getTimeShubuhPreference(getActivity());
+        time_dzuhur = Preference.getTimeDzuhurPreference(getActivity());
+        time_asr = Preference.getTimeAsrPreference(getActivity());
+        time_maghrib = Preference.getTimeMaghribPreference(getActivity());
+        time_isya = Preference.getTimeIsyaPreference(getActivity());
 
 //        layout bawah
 
@@ -141,68 +124,12 @@ public class JadwalFragment extends Fragment {
         model.setBackground_jadwal(background);
         final JadwalsholatAdapter jadwalsholatAdapter = new JadwalsholatAdapter(model.getName_jadwalsholat(), model.getJadwal_sholat(), model.getBackground_jadwal(), fragment);
         layout_bawah_jadwal.setAdapter(jadwalsholatAdapter);
-
-
-
-
-
-
-
-
-
-
-//
-
-//
-
-
 //
         return view;
     }
 //
 
-    public void getJadwalSholat(){
-//        latitude and longitude
-        double latitude,longitude;
-        latitude = Double.parseDouble(Preference.getLatitudePreferences(getActivity()));
-        longitude = Double.parseDouble(Preference.getLongitudePreferences(getActivity()));
 
-        Coordinates coordinates = new Coordinates(latitude,longitude);
-
-
-        DateComponents date = DateComponents.from(new Date());
-        Date tanggal = new Date();
-
-        CalculationParameters params = CalculationMethod.SINGAPORE.getParameters();
-        params.madhab = Madhab.SHAFI;
-
-        PrayerTimes prayer = new PrayerTimes(coordinates,date,params);
-
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm", Locale.UK);
-        formatter.setTimeZone(TimeZone.getTimeZone("Asia/Jakarta"));
-
-        SimpleDateFormat formatTanggal = new SimpleDateFormat("dd-MMMM-YYYY");
-//        set value
-        time_shubuh = String.valueOf(formatter.format(prayer.fajr));
-        time_dzuhur = String.valueOf(formatter.format(prayer.dhuhr));
-        time_asr = String.valueOf(formatter.format(prayer.asr));
-        time_maghrib = String.valueOf(formatter.format(prayer.maghrib));
-        time_isya = String.valueOf(formatter.format(prayer.isha));
-        tanggal_terkini = formatTanggal.format(tanggal).toString();
-
-        Preference.setTimeShubuhPreference(getActivity(),time_shubuh);
-        Preference.setTimeDzuhurPreference(getActivity(),time_dzuhur);
-        Preference.setTimeAsrPreference(getActivity(),time_asr);
-        Preference.setTimeMaghribPreference(getActivity(),time_maghrib);
-        Preference.setTimeIsyaPreference(getActivity(),time_isya);
-//
-
-
-
-
-
-
-    }
 
 
 

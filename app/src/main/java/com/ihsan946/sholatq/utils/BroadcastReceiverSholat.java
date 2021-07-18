@@ -9,10 +9,13 @@ import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.AudioAttributes;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
 import com.ihsan946.sholatq.R;
 
@@ -21,7 +24,6 @@ import java.util.Calendar;
 public class BroadcastReceiverSholat extends BroadcastReceiver {
     private PendingIntent pendingIntent;
     private static final int ALARM_REQUEST_CODE = 50;
-    private NotificationUtils mNotificationUtils;
     private static final String EXTRA_JADWAL_SHOLAT = "jadwal_sholat";
     public static final String SHOLAT_CHANNEL_ID = "SHOLATQ.JADWALSHOLAT";
     public static final String SHOLAT_CHANNEL_NAME = "SHOLATQ";
@@ -38,10 +40,16 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
 
     private void kirimNotif(Context context , String jadwal_sholat){
         String name = "SholatQ";
-        Uri alarmSound;
-        mNotificationUtils = new NotificationUtils(context);
-        Notification.Builder nb = mNotificationUtils.
-                getAndroidChannelNotification(name,jadwal_sholat);
+        Uri alarmSound = null;
+
+//
+        NotificationManager notificationManagerCompat = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, SHOLAT_CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_notify)
+                .setContentTitle(name)
+                .setContentText(jadwal_sholat)
+                .setColor(ContextCompat.getColor(context, android.R.color.transparent))
+                .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000});
 //
         AudioAttributes audioAttributes = new AudioAttributes.Builder()
                 .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
@@ -59,17 +67,29 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
         }
 
 // create android channel
-        NotificationChannel androidChannel = new NotificationChannel(SHOLAT_CHANNEL_ID,
-                SHOLAT_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel androidChannel = new NotificationChannel(SHOLAT_CHANNEL_ID,
+                    SHOLAT_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            androidChannel.enableLights(true);
+            androidChannel.enableVibration(true);
+            androidChannel.setVibrationPattern(new long[]{1000, 1000, 1000, 1000, 1000});
+            androidChannel.setSound(alarmSound, audioAttributes);
 
-        androidChannel.enableLights(true);
-        androidChannel.enableVibration(true);
-        androidChannel.setLightColor(Color.WHITE);
-        androidChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
-        androidChannel.setSound(alarmSound, audioAttributes);
+            if (notificationManagerCompat != null) {
+                notificationManagerCompat.createNotificationChannel(androidChannel);
+            }
+
+            Notification notification = builder.build();
+
+            if (notificationManagerCompat != null) {
+                notificationManagerCompat.notify(ALARM_REQUEST_CODE, notification);
+            }
+        }
+
 //
-        mNotificationUtils.getManager().createNotificationChannel(androidChannel);
-        mNotificationUtils.getManager().notify(ALARM_REQUEST_CODE, nb.build());
+
+
+
 
     }
 
@@ -80,14 +100,14 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
 //
         String [] time_split;
         time_split = time_sholat.split("\\:");
-        int jam = Integer.valueOf(time_split[0]);
-        int menit = Integer.valueOf(time_split[1]);
+        int jam = Integer.parseInt(time_split[0]);
+        int menit = Integer.parseInt(time_split[1]);
 //
         Calendar calendar = Calendar.getInstance();
-        Calendar callset = (Calendar) calendar.clone();
-        callset.set(Calendar.HOUR_OF_DAY,jam);
-        callset.set(Calendar.MINUTE,menit);
-        callset.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY,jam);
+        calendar.set(Calendar.MINUTE,menit);
+        calendar.set(Calendar.SECOND,0);
+
 //
         Intent intent = new Intent(context, BroadcastReceiverSholat.class);
         intent.putExtra(EXTRA_JADWAL_SHOLAT, jadwal_sholat);
@@ -99,7 +119,6 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
         else
         {
             Log.d("ALARM", "SET ALARM FAILURE");
-
         }
 
     }

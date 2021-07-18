@@ -1,3 +1,4 @@
+//noinspection GradleCompatible
 plugins {
     id 'com.android.application'
 }

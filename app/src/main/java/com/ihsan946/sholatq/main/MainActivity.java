@@ -17,6 +17,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.batoulapps.adhan.CalculationMethod;
+import com.batoulapps.adhan.CalculationParameters;
+import com.batoulapps.adhan.Coordinates;
+import com.batoulapps.adhan.Madhab;
+import com.batoulapps.adhan.PrayerTimes;
+import com.batoulapps.adhan.data.DateComponents;
 import com.google.android.material.navigation.NavigationView;
 import com.ihsan946.sholatq.R;
 import com.ihsan946.sholatq.menufragment.DzikirFragment;
@@ -28,6 +34,7 @@ import com.ihsan946.sholatq.sharedpreferenced.Preference;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -38,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawer;
     Sholatqmodel model;
     TextView textView;
+    String time_shubuh,time_dzuhur,
+            time_asr,time_maghrib,time_isya;
     private PendingIntent pendingIntent;
     private static final int ALARM_REQUEST_CODE = 100;
 
@@ -84,13 +93,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigasi.getMenu().getItem(0).setChecked(true);
 //
 
-//        get ip device
-
-//        getLokasi();
         textView = findViewById(R.id.text_utama);
-
         textView.setText(Preference.getQUOTES(getBaseContext()));
-
+        getJadwalSholat();
 //
 
 
@@ -143,13 +148,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    public void notifSholat(){
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm ", Locale.UK);
-        String jam_sekarang = formatter.format(date);
+    public void getJadwalSholat(){
+//        latitude and longitude
+        double latitude,longitude;
+        latitude = Double.parseDouble(Preference.getLatitudePreferences(getBaseContext()));
+        longitude = Double.parseDouble(Preference.getLongitudePreferences(getBaseContext()));
 
+        Coordinates coordinates = new Coordinates(latitude,longitude);
+        DateComponents date = DateComponents.from(new Date());
+        CalculationParameters params = CalculationMethod.SINGAPORE.getParameters();
+        params.madhab = Madhab.SHAFI;
+        PrayerTimes prayer = new PrayerTimes(coordinates,date,params);
 
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm", Locale.UK);
+        formatter.setTimeZone(TimeZone.getTimeZone("Asia/Jakarta"));
 
+//        set value
+        time_shubuh = formatter.format(prayer.fajr);
+        time_dzuhur = formatter.format(prayer.dhuhr);
+        time_asr = formatter.format(prayer.asr);
+        time_maghrib = formatter.format(prayer.maghrib);
+        time_isya = formatter.format(prayer.isha);
+
+        Preference.setTimeShubuhPreference(getBaseContext(),time_shubuh);
+        Preference.setTimeDzuhurPreference(getBaseContext(),time_dzuhur);
+        Preference.setTimeAsrPreference(getBaseContext(),time_asr);
+        Preference.setTimeMaghribPreference(getBaseContext(),time_maghrib);
+        Preference.setTimeIsyaPreference(getBaseContext(),time_isya);
+//
 
     }
 

@@ -38,6 +38,7 @@
                 android:layout_width="@dimen/dimen110"
                 android:layout_height="wrap_content"
                 android:id="@+id/status_shubuh"
+                android:checked="false"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
         </LinearLayout>
         <LinearLayout
@@ -56,6 +57,7 @@
                 android:layout_width="@dimen/dimen110"
                 android:layout_height="wrap_content"
                 android:id="@+id/status_dzuhur"
+                android:checked="false"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
         </LinearLayout>
         <LinearLayout
@@ -74,6 +76,7 @@
                 android:layout_width="@dimen/dimen110"
                 android:layout_height="wrap_content"
                 android:id="@+id/status_asr"
+                android:checked="false"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
         </LinearLayout>
         <LinearLayout
@@ -92,6 +95,7 @@
                 android:layout_width="@dimen/dimen110"
                 android:layout_height="wrap_content"
                 android:id="@+id/status_maghrib"
+                android:checked="false"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
         </LinearLayout>
         <LinearLayout
@@ -110,6 +114,7 @@
                 android:layout_width="@dimen/dimen110"
                 android:layout_height="wrap_content"
                 android:id="@+id/status_isya"
+                android:checked="false"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
         </LinearLayout>
 
