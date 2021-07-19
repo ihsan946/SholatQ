@@ -27,6 +27,10 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
     private static final String EXTRA_JADWAL_SHOLAT = "jadwal_sholat";
     public static final String SHOLAT_CHANNEL_ID = "SHOLATQ.JADWALSHOLAT";
     public static final String SHOLAT_CHANNEL_NAME = "SHOLATQ";
+    Uri alarmSound = null;
+
+
+
 
 
     @Override
@@ -34,20 +38,19 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
 
         String jadwal_sholat = intent.getStringExtra(EXTRA_JADWAL_SHOLAT);
         kirimNotif(context,jadwal_sholat);
-
     }
 
 
-    private void kirimNotif(Context context , String jadwal_sholat){
+    public void kirimNotif(Context context, String jadwal_sholat){
         String name = "SholatQ";
-        Uri alarmSound = null;
+
 
 //
         NotificationManager notificationManagerCompat = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, SHOLAT_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notify)
                 .setContentTitle(name)
-                .setContentText(jadwal_sholat)
+                .setContentText("Saatnya Waktu Sholat "+ jadwal_sholat)
                 .setColor(ContextCompat.getColor(context, android.R.color.transparent))
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000});
 //
@@ -93,34 +96,48 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
 
     }
 
-    public void setRepeatingAlarm(Context context, int ALARM_REQUEST_CODE, String time_sholat, String jadwal_sholat) {
+    public void setOneTimeAlarm(Context context, int ALARM_REQUEST_CODE, String time_sholat, String jadwal_sholat, String tanggal_kini) {
 
         Intent alarmintent = new Intent(context,BroadcastReceiverSholat.class);
-        pendingIntent = PendingIntent.getBroadcast(context,ALARM_REQUEST_CODE,alarmintent,0);
+        alarmintent.putExtra(EXTRA_JADWAL_SHOLAT,jadwal_sholat);
+
 //
         String [] time_split;
         time_split = time_sholat.split("\\:");
+        String [] date = tanggal_kini.split("-");
         int jam = Integer.parseInt(time_split[0]);
         int menit = Integer.parseInt(time_split[1]);
+        int tahun = Integer.parseInt(date[0]);
+        int bulan = Integer.parseInt(date[1]);
+        int tanggal = Integer.parseInt(date[2]);
+
 //
         Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR,tahun);
+        calendar.set(Calendar.MONTH,bulan - 1);
+        calendar.set(Calendar.DAY_OF_MONTH,tanggal);
         calendar.set(Calendar.HOUR_OF_DAY,jam);
         calendar.set(Calendar.MINUTE,menit);
         calendar.set(Calendar.SECOND,0);
 
 //
-        Intent intent = new Intent(context, BroadcastReceiverSholat.class);
-        intent.putExtra(EXTRA_JADWAL_SHOLAT, jadwal_sholat);
-//
+
+        pendingIntent = PendingIntent.getBroadcast(context,ALARM_REQUEST_CODE,alarmintent,0);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
         if (alarmManager != null) {
-            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),pendingIntent);
         }
         else
         {
             Log.d("ALARM", "SET ALARM FAILURE");
         }
 
+    }
+
+    public boolean isAlarmSet(Context context) {
+        Intent intent = new Intent(context, BroadcastReceiverSholat.class);
+
+        return PendingIntent.getBroadcast(context, 100, intent, PendingIntent.FLAG_NO_CREATE) != null;
     }
 
     public void cancelAlarm(Context context, int ALARM_REQUEST_CODE) {

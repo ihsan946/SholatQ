@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import androidx.fragment.app.Fragment;
 
 import com.ihsan946.sholatq.R;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
+import com.ihsan946.sholatq.utils.BroadcastReceiverSholat;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,12 +23,12 @@ public class SetelanFragment extends Fragment {
 
     Switch status_shubuh,status_dzuhur,status_asr,status_maghrib,status_isya;
 //
-    final int ALARM_CODE_SHUBUH = 100;
-    final int ALARM_CODE_DZUHUR = 101;
-    final int ALARM_CODE_ASR = 102;
-    final int ALARM_CODE_MAGHRIB = 103;
-    final int ALARM_CODE_ISYA = 104;
-//    BroadcastReceiverSholat broadcastreceiversholat;
+    int ALARM_CODE_SHUBUH = 100;
+    int ALARM_CODE_DZUHUR = 101;
+    int ALARM_CODE_ASR = 102;
+    int ALARM_CODE_MAGHRIB = 103;
+    int ALARM_CODE_ISYA = 104;
+    BroadcastReceiverSholat broadcastreceiversholat;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -86,96 +88,64 @@ public class SetelanFragment extends Fragment {
         status_asr.setChecked(Preference.getStatusAsrPreference(getActivity()));
         status_maghrib.setChecked(Preference.getStatusMaghribPreference(getActivity()));
         status_isya.setChecked(Preference.getStatusIsyaPreference(getActivity()));
-//        broadcastreceiversholat = new BroadcastReceiverSholat();
+        broadcastreceiversholat = new BroadcastReceiverSholat();
 //
-//        status_shubuh.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//            if(isChecked){
-//                if(Preference.getStatusShubuhPreference(getActivity()) == true){
-//                    Preference.setStatusShubuhPreference(getActivity(),true);
-//                }
-//                else{
-//                    broadcastreceiversholat.setRepeatingAlarm(getActivity(),ALARM_CODE_SHUBUH,
-//                            Preference.getTimeShubuhPreference(getActivity()),"Shubuh");
-//                    Preference.setStatusShubuhPreference(getActivity(),true);
-//                }
+        status_shubuh.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked){
+                Preference.setStatusShubuhPreference(getActivity(),true);
+            }
+            else{
+                Preference.setStatusShubuhPreference(getActivity(),false);
+                broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_SHUBUH);
+            }
+        });
 //
-//            }
-//            else{
-//                broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_SHUBUH);
-//                Preference.setStatusShubuhPreference(getActivity(),false);
-//            }
-//        });
+        status_dzuhur.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked){
+                Preference.setStatusDzuhurPreference(getActivity(),true);
+            }
+            else{
+                Preference.setStatusDzuhurPreference(getActivity(),false);
+                broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_DZUHUR);
+            }
+        });
 //
-//        status_dzuhur.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//            if(isChecked){
-//                if(Preference.getStatusDzuhurPreference(getActivity()) == true){
-//                    Preference.setStatusDzuhurPreference(getActivity(),true);
-//                }
-//                else{
-//                    broadcastreceiversholat.setRepeatingAlarm(getActivity(),ALARM_CODE_DZUHUR,
-//                            Preference.getTimeDzuhurPreference(getActivity()),"Dzuhur");
-//                    Preference.setStatusDzuhurPreference(getActivity(),true);
-//                }
-//            }
-//            else{
-//                broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_DZUHUR);
-//                Preference.setStatusDzuhurPreference(getActivity(),false);
-//            }
-//        });
+        status_asr.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    Preference.setStatusAsrPreference(getActivity(),true);
+                }
+                else{
+                    Preference.setStatusAsrPreference(getActivity(),false);
+                    broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_ASR);
+                }
+            }
+        });
 //
-//        status_asr.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//            if(isChecked){
-//                if(Preference.getStatusAsrPreference(getActivity()) == true){
-//                    Preference.setStatusAsrPreference(getActivity(),true);
-//                }
-//                else{
-//                    broadcastreceiversholat.setRepeatingAlarm(getActivity(),ALARM_CODE_ASR,
-//                            Preference.getTimeAsrPreference(getActivity()),"Ashar");
-//                    Preference.setStatusAsrPreference(getActivity(),true);
-//                }
-//            }
-//            else{
-//                broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_ASR);
-//                Preference.setStatusAsrPreference(getActivity(),false);
-//            }
-//        });
-//
-//        status_maghrib.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//            if(isChecked){
-//                if(Preference.getStatusMaghribPreference(getActivity()) == true){
-//                    Preference.setStatusMaghribPreference(getActivity(),true);
-//                }
-//                else{
-//                    broadcastreceiversholat.setRepeatingAlarm(getActivity(),ALARM_CODE_MAGHRIB,
-//                            Preference.getTimeMaghribPreference(getActivity()),"Maghrib");
-//                    Preference.setStatusMaghribPreference(getActivity(),true);
-//                }
-//
-//            }
-//            else{
-//                broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_MAGHRIB);
-//                Preference.setStatusMaghribPreference(getActivity(),false);
-//            }
-//        });
-//
-//        status_isya.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//            if(isChecked){
-//                if(Preference.getStatusIsyaPreference(getActivity()) == true){
-//                    Preference.setStatusIsyaPreference(getActivity(),true);
-//                }
-//                else{
-//                    broadcastreceiversholat.setRepeatingAlarm(getActivity(),ALARM_CODE_ISYA,
-//                            Preference.getTimeIsyaPreference(getActivity()),"Isya");
-//                    Preference.setStatusIsyaPreference(getActivity(),true);
-//                }
-//
-//            }
-//            else{
-//                broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_ISYA);
-//                Preference.setStatusIsyaPreference(getActivity(),false);
-//            }
-//        });
+        status_maghrib.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked){
+                Preference.setStatusMaghribPreference(getActivity(),true);
+
+            }
+            else{
+                Preference.setStatusMaghribPreference(getActivity(),false);
+                broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_MAGHRIB);
+            }
+        });
+
+        status_isya.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked){
+                Preference.setStatusIsyaPreference(getActivity(),true);
+            }
+            else{
+                Preference.setStatusIsyaPreference(getActivity(),false);
+                broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_ISYA);
+            }
+        });
 
         return view;
     }
+
+
 }

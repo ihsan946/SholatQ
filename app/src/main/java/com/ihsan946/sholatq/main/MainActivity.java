@@ -1,7 +1,5 @@
 package com.ihsan946.sholatq.main;
 
-import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -28,8 +26,8 @@ import com.ihsan946.sholatq.R;
 import com.ihsan946.sholatq.menufragment.DzikirFragment;
 import com.ihsan946.sholatq.menufragment.JadwalFragment;
 import com.ihsan946.sholatq.menufragment.SetelanFragment;
-import com.ihsan946.sholatq.model.Sholatqmodel;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
+import com.ihsan946.sholatq.utils.BroadcastReceiverSholat;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,16 +37,13 @@ import java.util.TimeZone;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Fragment fragment;
-    Activity activity;
     FragmentTransaction transaction;
     NavigationView navigasi;
     DrawerLayout drawer;
-    Sholatqmodel model;
     TextView textView;
     String time_shubuh,time_dzuhur,
-            time_asr,time_maghrib,time_isya;
-    private PendingIntent pendingIntent;
-    private static final int ALARM_REQUEST_CODE = 100;
+            time_asr,time_maghrib,time_isya,tanggal_kini;
+
 
 
 
@@ -98,10 +93,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getJadwalSholat();
 //
 
+    }
 
-
-
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        setNotifikasiSholat();
     }
 
     private void tampilanFragmentUtama(int item) {
@@ -179,7 +176,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    public void setNotifikasiSholat(){
+        Date date = new Date();
+        int ALARM_CODE_SHUBUH = 100;
+        int ALARM_CODE_DZUHUR = 101;
+        int ALARM_CODE_ASR = 102;
+        int ALARM_CODE_MAGHRIB = 103;
+        int ALARM_CODE_ISYA = 104;
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        tanggal_kini = formatter.format(date);
+        BroadcastReceiverSholat broadcastReceiverSholat = new BroadcastReceiverSholat();
+//
+        if(Preference.getStatusShubuhPreference(getBaseContext()) == true){
+            broadcastReceiverSholat.setOneTimeAlarm(getBaseContext(),ALARM_CODE_SHUBUH,
+                    Preference.getTimeShubuhPreference(getBaseContext()),"Shubuh",tanggal_kini);
+        }
 
+        if(Preference.getStatusDzuhurPreference(getBaseContext()) == true){
+            broadcastReceiverSholat.setOneTimeAlarm(getBaseContext(),ALARM_CODE_DZUHUR,
+                    Preference.getTimeDzuhurPreference(getBaseContext()),"Dzuhur",tanggal_kini);
+        }
+
+        if(Preference.getStatusAsrPreference(getBaseContext()) == true){
+            broadcastReceiverSholat.setOneTimeAlarm(getBaseContext(),ALARM_CODE_ASR,
+                    Preference.getTimeAsrPreference(getBaseContext()),"Ashar",tanggal_kini);
+        }
+
+        if(Preference.getStatusMaghribPreference(getBaseContext()) == true){
+            broadcastReceiverSholat.setOneTimeAlarm(getBaseContext(),ALARM_CODE_MAGHRIB,
+                    Preference.getTimeMaghribPreference(getBaseContext()),"Maghrib",tanggal_kini);
+        }
+
+        if(Preference.getStatusIsyaPreference(getBaseContext()) == true){
+            broadcastReceiverSholat.setOneTimeAlarm(getBaseContext(),ALARM_CODE_ISYA,
+                    Preference.getTimeIsyaPreference(getBaseContext()),"Isya",tanggal_kini);
+        }
+
+    }
 
 
 

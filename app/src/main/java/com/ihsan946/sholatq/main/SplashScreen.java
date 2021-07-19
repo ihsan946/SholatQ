@@ -39,7 +39,7 @@ public class SplashScreen extends AppCompatActivity {
 //
         getIp();
         getLokasi();
-        getTextQuotes();
+//        getTextQuotes();
 
 //
 

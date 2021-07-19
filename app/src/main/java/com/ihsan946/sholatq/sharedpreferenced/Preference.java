@@ -210,7 +210,7 @@ public class Preference {
         SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
-        editor.putBoolean(STATUS_DZUHUR,asr);
+        editor.putBoolean(STATUS_ASR,asr);
         editor.apply();
     }
 //

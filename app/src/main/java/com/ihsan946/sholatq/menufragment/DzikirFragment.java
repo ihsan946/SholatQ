@@ -84,8 +84,7 @@ public class DzikirFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 hitungDzikir();
-                broadcastReceiverSholat = new BroadcastReceiverSholat();
-                broadcastReceiverSholat.setRepeatingAlarm(getActivity(),100,"04:41","Shubuh");
+
             }
         });
 
