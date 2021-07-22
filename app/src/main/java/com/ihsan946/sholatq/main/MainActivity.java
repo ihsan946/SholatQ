@@ -1,5 +1,6 @@
 package com.ihsan946.sholatq.main;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -47,12 +48,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 //
         Toolbar toolbar = findViewById(R.id.toolbar_menu);
         setSupportActionBar(toolbar);
@@ -62,12 +62,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportActionBar().setTitle(" ");
         }
 //
-
-//
         navigasi = findViewById(R.id.nav_menu);
         navigasi.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
-//
-
 //
         drawer = findViewById(R.id.drawer_menu);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -87,20 +83,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //
         navigasi.getMenu().getItem(0).setChecked(true);
 //
-
         textView = findViewById(R.id.text_utama);
         textView.setText(Preference.getQUOTES(getBaseContext()));
-        getJadwalSholat();
 //
 
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        setNotifikasiSholat();
+    protected void onStart() {
+        super.onStart();
+        getJadwalSholat();
     }
 
+    @SuppressLint("NonConstantResourceId")
     private void tampilanFragmentUtama(int item) {
         fragment = null;
 
@@ -128,7 +123,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawer.closeDrawers();
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -167,11 +161,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         time_maghrib = formatter.format(prayer.maghrib);
         time_isya = formatter.format(prayer.isha);
 
-        Preference.setTimeShubuhPreference(getBaseContext(),time_shubuh);
-        Preference.setTimeDzuhurPreference(getBaseContext(),time_dzuhur);
-        Preference.setTimeAsrPreference(getBaseContext(),time_asr);
-        Preference.setTimeMaghribPreference(getBaseContext(),time_maghrib);
-        Preference.setTimeIsyaPreference(getBaseContext(),time_isya);
+        if(!time_shubuh.equals(Preference.getTimeShubuhPreference(getBaseContext()))){
+            Preference.setTimeShubuhPreference(getBaseContext(),time_shubuh);
+        }
+        if(!time_dzuhur.equals(Preference.getTimeDzuhurPreference(getBaseContext()))){
+            Preference.setTimeDzuhurPreference(getBaseContext(),time_dzuhur);
+        }
+        if(!time_asr.equals(Preference.getTimeAsrPreference(getBaseContext()))){
+            Preference.setTimeAsrPreference(getBaseContext(),time_asr);
+        }
+        if(!time_maghrib.equals(Preference.getTimeMaghribPreference(getBaseContext()))){
+            Preference.setTimeMaghribPreference(getBaseContext(),time_maghrib);
+        }
+        if(!time_isya.equals(Preference.getTimeIsyaPreference(getBaseContext()))){
+            Preference.setTimeIsyaPreference(getBaseContext(),time_isya);
+        }
+        setNotifikasiSholat();
 //
 
     }
@@ -183,33 +188,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int ALARM_CODE_ASR = 102;
         int ALARM_CODE_MAGHRIB = 103;
         int ALARM_CODE_ISYA = 104;
+
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         tanggal_kini = formatter.format(date);
         BroadcastReceiverSholat broadcastReceiverSholat = new BroadcastReceiverSholat();
 //
         if(Preference.getStatusShubuhPreference(getBaseContext()) == true){
-            broadcastReceiverSholat.setOneTimeAlarm(getBaseContext(),ALARM_CODE_SHUBUH,
-                    Preference.getTimeShubuhPreference(getBaseContext()),"Shubuh",tanggal_kini);
+            if(!time_shubuh.equals(Preference.getTimeShubuhPreference(getBaseContext()))){
+                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_SHUBUH);
+                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_SHUBUH,
+                        Preference.getTimeShubuhPreference(getBaseContext()),"Shubuh",tanggal_kini);
+            }
+
         }
 
         if(Preference.getStatusDzuhurPreference(getBaseContext()) == true){
-            broadcastReceiverSholat.setOneTimeAlarm(getBaseContext(),ALARM_CODE_DZUHUR,
-                    Preference.getTimeDzuhurPreference(getBaseContext()),"Dzuhur",tanggal_kini);
+            if(!time_dzuhur.equals(Preference.getTimeDzuhurPreference(getBaseContext()))){
+                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_DZUHUR);
+                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_DZUHUR,
+                        Preference.getTimeDzuhurPreference(getBaseContext()),"Dzuhur",tanggal_kini);
+            }
         }
 
         if(Preference.getStatusAsrPreference(getBaseContext()) == true){
-            broadcastReceiverSholat.setOneTimeAlarm(getBaseContext(),ALARM_CODE_ASR,
-                    Preference.getTimeAsrPreference(getBaseContext()),"Ashar",tanggal_kini);
+            if(!time_asr.equals(Preference.getTimeAsrPreference(getBaseContext()))){
+                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_ASR);
+                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_ASR,
+                        Preference.getTimeAsrPreference(getBaseContext()),"Ashar",tanggal_kini);
+            }
         }
 
         if(Preference.getStatusMaghribPreference(getBaseContext()) == true){
-            broadcastReceiverSholat.setOneTimeAlarm(getBaseContext(),ALARM_CODE_MAGHRIB,
-                    Preference.getTimeMaghribPreference(getBaseContext()),"Maghrib",tanggal_kini);
+            if(!time_maghrib.equals(Preference.getTimeMaghribPreference(getBaseContext()))){
+                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_MAGHRIB);
+                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_MAGHRIB,
+                        Preference.getTimeMaghribPreference(getBaseContext()),"Maghrib",tanggal_kini);
+            }
         }
 
         if(Preference.getStatusIsyaPreference(getBaseContext()) == true){
-            broadcastReceiverSholat.setOneTimeAlarm(getBaseContext(),ALARM_CODE_ISYA,
-                    Preference.getTimeIsyaPreference(getBaseContext()),"Isya",tanggal_kini);
+            if(!time_isya.equals(Preference.getTimeIsyaPreference(getBaseContext()))){
+                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_ISYA);
+                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_ISYA,
+                        Preference.getTimeIsyaPreference(getBaseContext()),"Isya",tanggal_kini);
+            }
         }
 
     }

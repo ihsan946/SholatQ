@@ -126,7 +126,6 @@ public class SetelanFragment extends Fragment {
         status_maghrib.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if(isChecked){
                 Preference.setStatusMaghribPreference(getActivity(),true);
-
             }
             else{
                 Preference.setStatusMaghribPreference(getActivity(),false);
@@ -134,18 +133,21 @@ public class SetelanFragment extends Fragment {
             }
         });
 
-        status_isya.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if(isChecked){
-                Preference.setStatusIsyaPreference(getActivity(),true);
-            }
-            else{
-                Preference.setStatusIsyaPreference(getActivity(),false);
-                broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_ISYA);
+        status_isya.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    Preference.setStatusIsyaPreference(getActivity(),true);
+                }else{
+                    Preference.setStatusIsyaPreference(getActivity(),false);
+                    broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_ISYA);
+                }
             }
         });
 
         return view;
     }
+
 
 
 }

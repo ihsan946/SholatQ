@@ -28,6 +28,7 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
     public static final String SHOLAT_CHANNEL_ID = "SHOLATQ.JADWALSHOLAT";
     public static final String SHOLAT_CHANNEL_NAME = "SHOLATQ";
     Uri alarmSound = null;
+    Uri alarmSoundShubuh = null;
 
 
 
@@ -59,27 +60,40 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
                 .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
                 .build();
 
-        if(jadwal_sholat.equals("Shubuh")){
-             alarmSound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE
-                    + "://"+ context.getPackageName()
-                    + "/" + R.raw.adzan_shubuh);
-        }else{
-             alarmSound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE
-                    + "://"+ context.getPackageName()
-                    + "/" + R.raw.adzan_bosnia);
-        }
+        alarmSoundShubuh = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE
+                + "://"+ context.getPackageName()
+                + "/" + R.raw.adzan_shubuh);
+
+        alarmSound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE
+                + "://"+ context.getPackageName()
+                + "/" + R.raw.adzan_bosnia);
+
 
 // create android channel
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel androidChannel = new NotificationChannel(SHOLAT_CHANNEL_ID,
+            NotificationChannel sholatChannel = new NotificationChannel(SHOLAT_CHANNEL_ID,
                     SHOLAT_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
-            androidChannel.enableLights(true);
-            androidChannel.enableVibration(true);
-            androidChannel.setVibrationPattern(new long[]{1000, 1000, 1000, 1000, 1000});
-            androidChannel.setSound(alarmSound, audioAttributes);
+            sholatChannel.enableLights(true);
+            sholatChannel.enableVibration(true);
+            sholatChannel.setVibrationPattern(new long[]{1000, 1000, 1000, 1000, 1000});
+            sholatChannel.setSound(alarmSoundShubuh, audioAttributes);
+            //
+            NotificationChannel shubuhChannel = new NotificationChannel(SHOLAT_CHANNEL_ID,
+                    SHOLAT_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            sholatChannel.enableLights(true);
+            sholatChannel.enableVibration(true);
+            sholatChannel.setVibrationPattern(new long[]{1000, 1000, 1000, 1000, 1000});
+            sholatChannel.setSound(alarmSound, audioAttributes);
 
-            if (notificationManagerCompat != null) {
-                notificationManagerCompat.createNotificationChannel(androidChannel);
+
+            if(jadwal_sholat.equals("Shubuh")){
+                if (notificationManagerCompat != null) {
+                    notificationManagerCompat.createNotificationChannel(shubuhChannel);
+                }
+            }else{
+                if (notificationManagerCompat != null) {
+                    notificationManagerCompat.createNotificationChannel(sholatChannel);
+                }
             }
 
             Notification notification = builder.build();
@@ -91,12 +105,9 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
 
 //
 
-
-
-
     }
 
-    public void setOneTimeAlarm(Context context, int ALARM_REQUEST_CODE, String time_sholat, String jadwal_sholat, String tanggal_kini) {
+    public void setRepeatingAlarm(Context context, int ALARM_REQUEST_CODE, String time_sholat, String jadwal_sholat, String tanggal_kini) {
 
         Intent alarmintent = new Intent(context,BroadcastReceiverSholat.class);
         alarmintent.putExtra(EXTRA_JADWAL_SHOLAT,jadwal_sholat);
@@ -104,18 +115,18 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
 //
         String [] time_split;
         time_split = time_sholat.split("\\:");
-        String [] date = tanggal_kini.split("-");
+//        String [] date = tanggal_kini.split("-");
         int jam = Integer.parseInt(time_split[0]);
         int menit = Integer.parseInt(time_split[1]);
-        int tahun = Integer.parseInt(date[0]);
-        int bulan = Integer.parseInt(date[1]);
-        int tanggal = Integer.parseInt(date[2]);
+//        int tahun = Integer.parseInt(date[0]);
+//        int bulan = Integer.parseInt(date[1]);
+//        int tanggal = Integer.parseInt(date[2]);
 
 //
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR,tahun);
-        calendar.set(Calendar.MONTH,bulan - 1);
-        calendar.set(Calendar.DAY_OF_MONTH,tanggal);
+//        calendar.set(Calendar.YEAR,tahun);
+//        calendar.set(Calendar.MONTH,bulan - 1);
+//        calendar.set(Calendar.DAY_OF_MONTH,tanggal);
         calendar.set(Calendar.HOUR_OF_DAY,jam);
         calendar.set(Calendar.MINUTE,menit);
         calendar.set(Calendar.SECOND,0);
@@ -125,7 +136,7 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
         pendingIntent = PendingIntent.getBroadcast(context,ALARM_REQUEST_CODE,alarmintent,0);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
         if (alarmManager != null) {
-            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),pendingIntent);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
         }
         else
         {

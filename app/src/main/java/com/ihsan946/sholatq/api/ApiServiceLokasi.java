@@ -4,13 +4,12 @@ import com.ihsan946.sholatq.model.ApimodelLokasi;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 
 public interface ApiServiceLokasi {
 
     //
-    @GET("/{ip}/json")
-    Call<ApimodelLokasi> getLokasi(@Path(value = "ip",encoded = true) String parameter);
+    @GET("/json")
+    Call<ApimodelLokasi> getLokasi();
 
 //
 }

@@ -12,106 +12,132 @@
         android:layout_height="match_parent"
         android:id="@+id/layout_setelan"
         android:orientation="vertical"
-        android:padding="@dimen/dimen20"
+        android:padding="@dimen/dimen10"
+        android:layout_marginTop="?actionBarSize"
         >
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/dimen50"
-            android:text="@string/judul_pengaturan"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/border_setelan"
+            android:padding="@dimen/dimen30"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:fontFamily="@font/rubik400"
+                android:textSize="20sp"
+                android:textColor="@color/bone"
+                android:layout_marginTop="@dimen/dimen50"
+                android:text="@string/judul_pengaturan"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dimen30"
+                android:id="@+id/pengaturan_shubuh"
+                >
+                <TextView
+                    android:layout_width="@dimen/dimen110"
+                    android:fontFamily="@font/rubik400"
+                    android:textColor="@color/bone"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setelan_shubuh"
+                    />
+                <Switch
+                    android:layout_width="@dimen/dimen110"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status_shubuh"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dimen30"
+                android:id="@+id/pengaturan_dzuhur"
+                >
+                <TextView
+                    android:layout_width="@dimen/dimen110"
+                    android:fontFamily="@font/rubik400"
+                    android:textColor="@color/bone"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setelan_dzuhur"
+                    />
+                <Switch
+                    android:layout_width="@dimen/dimen110"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status_dzuhur"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dimen30"
+                android:id="@+id/pengaturan_asr"
+                >
+                <TextView
+                    android:layout_width="@dimen/dimen110"
+                    android:fontFamily="@font/rubik400"
+                    android:textColor="@color/bone"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setelan_asr"
+                    />
+                <Switch
+                    android:layout_width="@dimen/dimen110"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status_asr"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dimen30"
+                android:id="@+id/pengaturan_maghrib"
+                >
 
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/dimen30"
-            android:id="@+id/pengaturan_shubuh"
-            >
-            <TextView
-                android:layout_width="@dimen/dimen110"
+                <TextView
+                    android:layout_width="@dimen/dimen120"
+                    android:fontFamily="@font/rubik400"
+                    android:textColor="@color/bone"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setelan_maghrib"
+                    />
+                <Switch
+                    android:layout_width="@dimen/dimen110"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status_maghrib"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/setelan_shubuh"
-                />
-            <Switch
-                android:layout_width="@dimen/dimen110"
-                android:layout_height="wrap_content"
-                android:id="@+id/status_shubuh"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dimen30"
+                android:id="@+id/pengaturan_isya"
+                >
+                <TextView
+                    android:layout_width="@dimen/dimen110"
+                    android:fontFamily="@font/rubik400"
+                    android:textColor="@color/bone"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setelan_isya"
+                    />
+                <Switch
+                    android:layout_width="@dimen/dimen110"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status_isya"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+            </LinearLayout>
+
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/dimen30"
-            android:id="@+id/pengaturan_dzuhur"
-            >
-            <TextView
-                android:layout_width="@dimen/dimen110"
-                android:layout_height="wrap_content"
-                android:text="@string/setelan_dzuhur"
-                />
-            <Switch
-                android:layout_width="@dimen/dimen110"
-                android:layout_height="wrap_content"
-                android:id="@+id/status_dzuhur"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/dimen30"
-            android:id="@+id/pengaturan_asr"
-            >
-            <TextView
-                android:layout_width="@dimen/dimen110"
-                android:layout_height="wrap_content"
-                android:text="@string/setelan_asr"
-                />
-            <Switch
-                android:layout_width="@dimen/dimen110"
-                android:layout_height="wrap_content"
-                android:id="@+id/status_asr"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/dimen30"
-            android:id="@+id/pengaturan_maghrib"
-            >
-            <TextView
-                android:layout_width="@dimen/dimen110"
-                android:layout_height="wrap_content"
-                android:text="@string/setelan_maghrib"
-                />
-            <Switch
-                android:layout_width="@dimen/dimen110"
-                android:layout_height="wrap_content"
-                android:id="@+id/status_maghrib"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/dimen30"
-            android:id="@+id/pengaturan_isya"
-            >
-            <TextView
-                android:layout_width="@dimen/dimen110"
-                android:layout_height="wrap_content"
-                android:text="@string/setelan_isya"
-                />
-            <Switch
-                android:layout_width="@dimen/dimen110"
-                android:layout_height="wrap_content"
-                android:id="@+id/status_isya"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
-        </LinearLayout>
+
+
+
 
     </LinearLayout>
 

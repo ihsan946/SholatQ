@@ -9,9 +9,6 @@
     android:padding="@dimen/dimen10"
     tools:context=".main.MainActivity">
 
-
-
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -25,11 +22,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="70dp"
             >
             <View
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="120dp"
                 android:id="@+id/background_quotes"
                 android:background="@color/zomp"
                 />
@@ -38,20 +35,22 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/name_quotes_main"
                 android:layout_centerHorizontal="true"
-                android:text="Quotes of Today"
-                android:textColor="@color/black"
-                android:layout_marginTop="50dp"
+                android:fontFamily="@font/rubik400"
+                android:text="@string/judul_quotes"
+                android:textColor="@color/bone"
+                android:layout_marginTop="@dimen/dimen20"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mohon Tunggu !!!"
                 android:id="@+id/text_utama"
+                android:fontFamily="@font/rubik400"
                 android:layout_below="@id/name_quotes_main"
                 android:padding="@dimen/dimen20"
                 android:layout_centerHorizontal="true"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/bone"
                 />
             <View
                 android:layout_width="match_parent"
@@ -63,23 +62,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/text_utama"
+                android:layout_below="@id/background_quotes"
                 android:id="@+id/name_pesan"
+                android:fontFamily="@font/rubik400"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="100dp"
-                android:text="Pesan Untuk Pengguna"
-                android:textColor="@color/black"
+                android:layout_marginTop="50dp"
+                android:text="@string/judul_pesan"
+                android:textColor="@color/bone"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/name_pesan"
+                android:fontFamily="@font/rubik400"
                 android:layout_marginLeft="@dimen/dimen30"
                 android:layout_marginStart="@dimen/dimen30"
                 android:text="@string/pesan"
                 android:id="@+id/pesan1"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/bone"
                 android:layout_marginTop="@dimen/dimen10"
                 />
             <TextView
@@ -88,9 +89,10 @@
                 android:layout_below="@id/pesan1"
                 android:layout_marginLeft="@dimen/dimen30"
                 android:layout_marginStart="@dimen/dimen30"
+                android:fontFamily="@font/rubik400"
                 android:text="@string/pesan2"
                 android:id="@+id/pesan2"
-                android:textColor="@color/black"
+                android:textColor="@color/bone"
                 android:layout_marginTop="@dimen/dimen10"
                 />
             <TextView
@@ -99,9 +101,10 @@
                 android:layout_below="@id/pesan2"
                 android:layout_marginLeft="@dimen/dimen30"
                 android:layout_marginStart="@dimen/dimen30"
+                android:fontFamily="@font/rubik400"
                 android:text="@string/pesan3"
                 android:id="@+id/pesan3"
-                android:textColor="@color/black"
+                android:textColor="@color/bone"
                 android:layout_marginTop="@dimen/dimen10"
                 />
             <TextView
@@ -110,10 +113,11 @@
                 android:layout_below="@id/pesan3"
                 android:layout_marginLeft="@dimen/dimen30"
                 android:layout_marginStart="@dimen/dimen30"
+                android:fontFamily="@font/rubik400"
                 android:text="@string/copyright"
                 android:id="@+id/copyright"
-                android:textColor="@color/black"
-                android:layout_marginTop="@dimen/dimen30"
+                android:textColor="@color/bone"
+                android:layout_marginTop="@dimen/dimen50"
                 />
 
 
@@ -133,8 +137,8 @@
             android:background="@color/toolbar"
             app:contentInsetStartWithNavigation="0dp"
             app:layout_anchor="@+id/appBarLayout"
-            app:layout_anchorGravity="center"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_anchorGravity="center"
             app:titleTextColor="@color/white" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <com.google.android.material.navigation.NavigationView

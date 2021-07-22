@@ -229,7 +229,7 @@ public class Preference {
 //
     public static boolean getStatusIsyaPreference(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE);
-        return preferences.getBoolean(STATUS_MAGHRIB, Utilstatic.DEFAULT_BOOLEAN);
+        return preferences.getBoolean(STATUS_ISYA, Utilstatic.DEFAULT_BOOLEAN);
 }
 
     public static void setStatusIsyaPreference(Context context,boolean isya) {

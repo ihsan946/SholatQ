@@ -9,10 +9,12 @@
     <!-- TODO: Update blank fragment layout -->
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="600dp"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?actionBarSize"
     android:layout_gravity="center"
     android:layout_marginRight="@dimen/dimen10"
     android:layout_marginLeft="@dimen/dimen10"
+    android:layout_marginBottom="40dp"
     android:background="@drawable/border_dzikir"
     android:orientation="vertical"
     >
@@ -20,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Dzikir Yuk"
+        android:fontFamily="@font/rubik400"
         android:textSize="35sp"
         android:textColor="@color/bone"
         android:layout_gravity="center"
@@ -31,6 +34,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="120dp"
         android:background="@drawable/border_hitung_dzikir"
+        android:fontFamily="@font/rubik400"
         android:text="0"
         android:id="@+id/tampil_hitung_dzikir"
         android:gravity="center"
@@ -54,6 +58,7 @@
                 android:background="@color/orange_pantone"
                 android:textColor="@color/bone"
                 android:id="@+id/tambah_dzikir"
+                android:fontFamily="@font/rubik400"
                 android:text="Tambah"
                 android:layout_marginTop="@dimen/dimen30"
                 android:layout_marginLeft="@dimen/dimen20"
@@ -61,7 +66,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:background="@color/blue_violet"
+                android:background="@color/winter_sky"
+                android:fontFamily="@font/rubik400"
                 android:textColor="@color/bone"
                 android:id="@+id/reset_dzikir"
                 android:text="RESET"

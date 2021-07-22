@@ -18,7 +18,6 @@ import com.ihsan946.sholatq.model.ApimodelQuotes;
 import com.ihsan946.sholatq.model.Sholatqmodel;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
 
-import io.ipgeolocation.api.IPGeolocationAPI;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,9 +36,9 @@ public class SplashScreen extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 //
-        getIp();
+//        getIp();
         getLokasi();
-//        getTextQuotes();
+        getTextQuotes();
 
 //
 
@@ -53,37 +52,37 @@ public class SplashScreen extends AppCompatActivity {
 
     }
 
-    public void getIp() {
-
-        String api_key = "e6a93eb6352441deba4e8801ab7c125d";
-        IPGeolocationAPI ip = new IPGeolocationAPI(api_key);
-
-//      get latitude and longitude
-//        String latitude,longitude;
-//        latitude = ip.getGeolocation().getLatitude();
-//        longitude = ip.getGeolocation().getLongitude();
-
-//        Preference.setLatitudePreferences(getBaseContext(),latitude);
-//        Preference.setLongitudePreferences(getBaseContext(),longitude);
-
+//    public void getIp() {
 //
-
-        String ip_device;
-        ip_device = ip.getGeolocation().getIPAddress();
-//            Log.d("IP","IP sama dengan : "+ip_device);
-        Ip_device = ip_device;
-//        Log.d("IP","IP sama dengan : "+model.getIp_device());
-        model = new Sholatqmodel();
-        model.setIp_device(Ip_device);
-        Preference.setIpPreferences(getApplicationContext(), model);
-
-
-    }
+//        String api_key = "341625ee30eb4ab6af1132b0a4e20890";
+//        IPGeolocationAPI ip = new IPGeolocationAPI(api_key);
+//
+////      get latitude and longitude
+////        String latitude,longitude;
+////        latitude = ip.getGeolocation().getLatitude();
+////        longitude = ip.getGeolocation().getLongitude();
+//
+////        Preference.setLatitudePreferences(getBaseContext(),latitude);
+////        Preference.setLongitudePreferences(getBaseContext(),longitude);
+//
+////
+//
+//        String ip_device;
+//        ip_device = ip.getGeolocation().getIPAddress();
+////            Log.d("IP","IP sama dengan : "+ip_device);
+//        Ip_device = ip_device;
+////        Log.d("IP","IP sama dengan : "+model.getIp_device());
+//        model = new Sholatqmodel();
+//        model.setIp_device(Ip_device);
+//        Preference.setIpPreferences(getApplicationContext(), model);
+//
+//
+//    }
 
     //     String nama_kota,latitude,longitude;
     public void getLokasi() {
         ApiServiceLokasi api = ApiEndpointLokasi.getClient().create(ApiServiceLokasi.class);
-        Call<ApimodelLokasi> call = api.getLokasi(Preference.getIpPreferences(getBaseContext()));
+        Call<ApimodelLokasi> call = api.getLokasi();
         call.enqueue(new Callback<ApimodelLokasi>() {
             @Override
             public void onResponse(Call<ApimodelLokasi> call, Response<ApimodelLokasi> response) {
@@ -155,9 +154,15 @@ public class SplashScreen extends AppCompatActivity {
         call.enqueue(new Callback<ApimodelQuotes>() {
             @Override
             public void onResponse(Call<ApimodelQuotes> call, Response<ApimodelQuotes> response) {
-                Log.v("Hasil", response.body().quotesmodel.text_quotes);
-                Quotes = response.body().quotesmodel.text_quotes;
-                Preference.setQUOTES(getApplicationContext(), Quotes);
+                if(response.body().status){
+                    Log.v("Hasil", response.body().quotesmodel.text_quotes);
+                    Quotes = response.body().quotesmodel.text_quotes;
+                    Preference.setQUOTES(getBaseContext(), Quotes);
+                }
+                else{
+                    Preference.setQUOTES(getBaseContext(),"Ada gangguan dengan Penyedia Quotes");
+                }
+
 
             }
 

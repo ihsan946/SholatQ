@@ -9,15 +9,17 @@
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="match_parent"
         android:paddingLeft="@dimen/dimen10"
         android:paddingRight="@dimen/dimen10"
         android:layout_gravity="center"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_marginBottom="40dp"
         >
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background_bawah"
+            android:background="@drawable/border_atas_jadwal"
             >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -41,12 +43,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jadwal Sholat"
+                        android:text="@string/judul_jadwal_sholat"
+                        android:fontFamily="@font/rubik400"
                         android:layout_centerHorizontal="true"
                         android:textSize="@dimen/sp22"
                         android:alpha="0.9"
                         android:id="@+id/name_jadwal"
-                        android:layout_marginTop="@dimen/dimen10"
+                        android:layout_marginTop="@dimen/dimen20"
                         android:textColor="@color/bone"
                         android:textStyle="bold"
                         />
@@ -57,6 +60,7 @@
                         android:layout_below="@id/name_jadwal"
                         android:layout_centerHorizontal="true"
                         android:text="Tanggal"
+                        android:fontFamily="@font/rubik400"
                         android:alpha="0.9"
                         android:layout_marginTop="@dimen/dimen10"
                         android:textColor="@color/bone"
@@ -67,6 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/value_lokasi"
+                        android:fontFamily="@font/rubik400"
                         android:layout_below="@id/tanggal_jadwal"
                         android:layout_centerHorizontal="true"
                         android:text="----------"
@@ -85,24 +90,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="270dp"
                 android:id="@+id/layout_bawah_jadwal"
-                android:background="@drawable/border_jadwal"
                 android:layout_below="@id/cardview_atas_jadwal"
                 android:layout_marginLeft="@dimen/dimen10"
                 android:layout_marginRight="@dimen/dimen10"
                 android:layout_marginTop="50dp"
                 android:paddingLeft="@dimen/dimen10"
                 android:paddingRight="@dimen/dimen10"
-                android:paddingBottom="@dimen/dimen10"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_bawah_jadwal"
+                android:text="Note : Geser tulisan jadwal sholat ke kanan dan kiri jika ingin mengetahui jadwal sholat keseluruhan"
+                android:fontFamily="@font/rubik400"
+                android:textColor="@color/bone"
+                android:textSize="15sp"
+                android:padding="@dimen/dimen10"
+                android:layout_marginTop="50dp"
                 />
 
         </RelativeLayout>
-
-
-
-
-
-
-
 
     </RelativeLayout>
 

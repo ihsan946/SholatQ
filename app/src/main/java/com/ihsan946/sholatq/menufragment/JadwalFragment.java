@@ -33,7 +33,6 @@ public class JadwalFragment extends Fragment {
     RecyclerView layout_bawah_jadwal;
 
 
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -111,13 +110,7 @@ public class JadwalFragment extends Fragment {
         String [] jadwal = {
                 time_shubuh,time_dzuhur,time_asr,time_maghrib,time_isya
         };
-        int [] background = {
-                R.drawable.shubuh
-                ,R.drawable.dzuhur
-                ,R.drawable.asr
-                ,R.drawable.maghrib
-                ,R.drawable.isya
-        };
+        int background = R.drawable.shubuh;
 
         model.setName_jadwalsholat(name_jadwal);
         model.setJadwal_sholat(jadwal);

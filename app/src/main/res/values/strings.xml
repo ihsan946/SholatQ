@@ -14,4 +14,11 @@
     <string name="setelan_asr">Jadwal Asr : </string>
     <string name="setelan_maghrib">Jadwal Maghrib : </string>
     <string name="setelan_isya">Jadwal Isya : </string>
+
+    <!---->
+    <string name="judul_pesan">Pesan Untuk Pengguna</string>
+    <string name="judul_quotes">Quotes of Today</string>
+    <!---->
+
+    <string name="judul_jadwal_sholat">Jadwal Sholat</string>
 </resources>

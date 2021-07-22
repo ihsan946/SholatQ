@@ -16,11 +16,11 @@ public class JadwalsholatAdapter extends RecyclerView.Adapter<JadwalsholatAdapte
 
     String [] name_jadwal_sholat;
     String [] jadwal_sholat ;
-    int [] background;
+    int background;
         Context ctx;
 
 
-    public JadwalsholatAdapter(String[] name_jadwal_sholat, String[] jadwal_sholat, int[] background, Context ctx) {
+    public JadwalsholatAdapter(String[] name_jadwal_sholat, String[] jadwal_sholat, int background, Context ctx) {
         this.name_jadwal_sholat = name_jadwal_sholat;
         this.jadwal_sholat = jadwal_sholat;
         this.background = background;
@@ -39,7 +39,7 @@ public class JadwalsholatAdapter extends RecyclerView.Adapter<JadwalsholatAdapte
         public void onBindViewHolder(MyHolder holder, final int position) {
             holder.name_jadwalsholat.setText(name_jadwal_sholat[position]);
             holder.value_jadwalsholat.setText(jadwal_sholat[position]);
-            holder.background.setImageResource(background[position]);
+            holder.background.setImageResource(background);
 
 
 
