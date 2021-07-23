@@ -53,6 +53,7 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
                 .setContentTitle(name)
                 .setContentText("Saatnya Waktu Sholat "+ jadwal_sholat)
                 .setColor(ContextCompat.getColor(context, android.R.color.transparent))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000});
 //
         AudioAttributes audioAttributes = new AudioAttributes.Builder()
@@ -76,26 +77,13 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
             sholatChannel.enableLights(true);
             sholatChannel.enableVibration(true);
             sholatChannel.setVibrationPattern(new long[]{1000, 1000, 1000, 1000, 1000});
-            sholatChannel.setSound(alarmSoundShubuh, audioAttributes);
-            //
-            NotificationChannel shubuhChannel = new NotificationChannel(SHOLAT_CHANNEL_ID,
-                    SHOLAT_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
-            sholatChannel.enableLights(true);
-            sholatChannel.enableVibration(true);
-            sholatChannel.setVibrationPattern(new long[]{1000, 1000, 1000, 1000, 1000});
             sholatChannel.setSound(alarmSound, audioAttributes);
 
+            //
 
-            if(jadwal_sholat.equals("Shubuh")){
-                if (notificationManagerCompat != null) {
-                    notificationManagerCompat.createNotificationChannel(shubuhChannel);
-                }
-            }else{
-                if (notificationManagerCompat != null) {
-                    notificationManagerCompat.createNotificationChannel(sholatChannel);
-                }
+            if (notificationManagerCompat != null) {
+                notificationManagerCompat.createNotificationChannel(sholatChannel);
             }
-
             Notification notification = builder.build();
 
             if (notificationManagerCompat != null) {

@@ -71,7 +71,7 @@
                 android:textColor="@color/bone"
                 android:id="@+id/reset_dzikir"
                 android:text="RESET"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="70dp"
                 android:layout_marginTop="@dimen/dimen30"
                 />
 

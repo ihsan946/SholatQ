@@ -133,7 +133,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_menu"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="?actionBarSize"
             android:background="@color/toolbar"
             app:contentInsetStartWithNavigation="0dp"
             app:layout_anchor="@+id/appBarLayout"

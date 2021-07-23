@@ -176,19 +176,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(!time_isya.equals(Preference.getTimeIsyaPreference(getBaseContext()))){
             Preference.setTimeIsyaPreference(getBaseContext(),time_isya);
         }
-        setNotifikasiSholat();
+
 //
 
     }
 
     public void setNotifikasiSholat(){
-        Date date = new Date();
+
         int ALARM_CODE_SHUBUH = 100;
         int ALARM_CODE_DZUHUR = 101;
         int ALARM_CODE_ASR = 102;
         int ALARM_CODE_MAGHRIB = 103;
         int ALARM_CODE_ISYA = 104;
-
+        Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         tanggal_kini = formatter.format(date);
         BroadcastReceiverSholat broadcastReceiverSholat = new BroadcastReceiverSholat();

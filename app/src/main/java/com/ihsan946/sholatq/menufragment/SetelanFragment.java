@@ -13,6 +13,9 @@ import com.ihsan946.sholatq.R;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
 import com.ihsan946.sholatq.utils.BroadcastReceiverSholat;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SetelanFragment#newInstance} factory method to
@@ -29,6 +32,9 @@ public class SetelanFragment extends Fragment {
     int ALARM_CODE_MAGHRIB = 103;
     int ALARM_CODE_ISYA = 104;
     BroadcastReceiverSholat broadcastreceiversholat;
+    Date date = new Date();
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    String tanggal_kini = formatter.format(date);
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -148,6 +154,21 @@ public class SetelanFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        broadcastreceiversholat = new BroadcastReceiverSholat();
 
-
+        //set alarm
+        broadcastreceiversholat.setRepeatingAlarm(getActivity(),ALARM_CODE_SHUBUH,
+                Preference.getTimeShubuhPreference(getActivity()),"Shubuh",tanggal_kini);
+        broadcastreceiversholat.setRepeatingAlarm(getActivity(),ALARM_CODE_DZUHUR,
+                Preference.getTimeDzuhurPreference(getActivity()),"Dzuhur",tanggal_kini);
+        broadcastreceiversholat.setRepeatingAlarm(getActivity(),ALARM_CODE_ASR,
+                Preference.getTimeAsrPreference(getActivity()),"Ashar",tanggal_kini);
+        broadcastreceiversholat.setRepeatingAlarm(getActivity(),ALARM_CODE_MAGHRIB,
+                Preference.getTimeMaghribPreference(getActivity()),"Maghrib",tanggal_kini);
+        broadcastreceiversholat.setRepeatingAlarm(getActivity(),ALARM_CODE_ISYA,
+                Preference.getTimeIsyaPreference(getActivity()),"Isya",tanggal_kini);
+    }
 }
