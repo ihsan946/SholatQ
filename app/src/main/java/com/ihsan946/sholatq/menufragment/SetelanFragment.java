@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -99,20 +100,28 @@ public class SetelanFragment extends Fragment {
         status_shubuh.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if(isChecked){
                 Preference.setStatusShubuhPreference(getActivity(),true);
+                Toast.makeText(getActivity(), "Setelan Shubuh" + " : " + "Sudah diaktifkan",
+                        Toast.LENGTH_LONG).show();
             }
             else{
                 Preference.setStatusShubuhPreference(getActivity(),false);
                 broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_SHUBUH);
+                Toast.makeText(getActivity(), "Setelan Shubuh" + " : " + "Sudah dimatikan",
+                        Toast.LENGTH_LONG).show();
             }
         });
 //
         status_dzuhur.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if(isChecked){
                 Preference.setStatusDzuhurPreference(getActivity(),true);
+                Toast.makeText(getActivity(), "Setelan Dzuhur" + " : " + "Sudah diaktifkan",
+                        Toast.LENGTH_LONG).show();
             }
             else{
                 Preference.setStatusDzuhurPreference(getActivity(),false);
                 broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_DZUHUR);
+                Toast.makeText(getActivity(), "Setelan Dzuhur" + " : " + "Sudah dimatikan",
+                        Toast.LENGTH_LONG).show();
             }
         });
 //
@@ -121,10 +130,14 @@ public class SetelanFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     Preference.setStatusAsrPreference(getActivity(),true);
+                    Toast.makeText(getActivity(), "Setelan Ashar" + " : " + "Sudah diaktifkan",
+                            Toast.LENGTH_LONG).show();
                 }
                 else{
                     Preference.setStatusAsrPreference(getActivity(),false);
                     broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_ASR);
+                    Toast.makeText(getActivity(), "Setelan Ashar" + " : " + "Sudah dimatikan",
+                            Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -132,10 +145,14 @@ public class SetelanFragment extends Fragment {
         status_maghrib.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if(isChecked){
                 Preference.setStatusMaghribPreference(getActivity(),true);
+                Toast.makeText(getActivity(), "Setelan Maghrib" + " : " + "Sudah diaktifkan",
+                        Toast.LENGTH_LONG).show();
             }
             else{
                 Preference.setStatusMaghribPreference(getActivity(),false);
                 broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_MAGHRIB);
+                Toast.makeText(getActivity(), "Setelan Maghrib" + " : " + "Sudah dimatikan",
+                        Toast.LENGTH_LONG).show();
             }
         });
 
@@ -144,9 +161,13 @@ public class SetelanFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     Preference.setStatusIsyaPreference(getActivity(),true);
+                    Toast.makeText(getActivity(), "Setelan Isya" + " : " + "Sudah diaktifkan",
+                            Toast.LENGTH_LONG).show();
                 }else{
                     Preference.setStatusIsyaPreference(getActivity(),false);
                     broadcastreceiversholat.cancelAlarm(getActivity(),ALARM_CODE_ISYA);
+                    Toast.makeText(getActivity(), "Setelan Isya" + " : " + "Sudah dimatikan",
+                            Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -155,8 +176,8 @@ public class SetelanFragment extends Fragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onStop() {
+        super.onStop();
         broadcastreceiversholat = new BroadcastReceiverSholat();
 
         //set alarm
@@ -170,5 +191,11 @@ public class SetelanFragment extends Fragment {
                 Preference.getTimeMaghribPreference(getActivity()),"Maghrib",tanggal_kini);
         broadcastreceiversholat.setRepeatingAlarm(getActivity(),ALARM_CODE_ISYA,
                 Preference.getTimeIsyaPreference(getActivity()),"Isya",tanggal_kini);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
     }
 }

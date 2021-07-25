@@ -14,11 +14,24 @@
     <string name="setelan_asr">Jadwal Asr : </string>
     <string name="setelan_maghrib">Jadwal Maghrib : </string>
     <string name="setelan_isya">Jadwal Isya : </string>
+    <string name="mohon_tunggu">Mohon Tunggu !!!</string>
+    <string name="desc_logo">Logo</string>
+    <string name="desc_gambar">View</string>
 
     <!---->
     <string name="judul_pesan">Pesan Untuk Pengguna</string>
     <string name="judul_quotes">Quotes of Today</string>
+    <string name="name_sholat">Shubuh</string>
+    <string name="jam_sholat">--:--</string>
     <!---->
 
     <string name="judul_jadwal_sholat">Jadwal Sholat</string>
+    <string name="judul_dzikir">Dzikir Yuk</string>
+    <string name="inisiasi_dzikir">0</string>
+    <string name="tambah">Tambah</string>
+    <string name="reset">Reset</string>
+    <string name="name_jadwal">Jadwal</string>
+    <string name="name_tanggal">Tanggal</string>
+    <string name="value_tanggal">----------</string>
+    <string name="note_jadwal">Note : Geser tulisan jadwal sholat ke kanan dan kiri jika ingin mengetahui jadwal sholat keseluruhan</string>
 </resources>

@@ -21,7 +21,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dzikir Yuk"
+        android:text="@string/judul_dzikir"
         android:fontFamily="@font/rubik400"
         android:textSize="35sp"
         android:textColor="@color/bone"
@@ -35,7 +35,7 @@
         android:layout_marginTop="120dp"
         android:background="@drawable/border_hitung_dzikir"
         android:fontFamily="@font/rubik400"
-        android:text="0"
+        android:text="@string/inisiasi_dzikir"
         android:id="@+id/tampil_hitung_dzikir"
         android:gravity="center"
         android:textSize="60sp"
@@ -45,13 +45,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="50dp"
-
-        >
+        android:paddingStart="50dp"
+        tools:ignore="RtlSymmetry">
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
@@ -59,9 +59,9 @@
                 android:textColor="@color/bone"
                 android:id="@+id/tambah_dzikir"
                 android:fontFamily="@font/rubik400"
-                android:text="Tambah"
+                android:text="@string/tambah"
                 android:layout_marginTop="@dimen/dimen30"
-                android:layout_marginLeft="@dimen/dimen20"
+                android:layout_marginStart="@dimen/dimen20"
                 />
             <Button
                 android:layout_width="wrap_content"
@@ -70,8 +70,8 @@
                 android:fontFamily="@font/rubik400"
                 android:textColor="@color/bone"
                 android:id="@+id/reset_dzikir"
-                android:text="RESET"
-                android:layout_marginLeft="70dp"
+                android:text="@string/reset"
+                android:layout_marginStart="70dp"
                 android:layout_marginTop="@dimen/dimen30"
                 />
 

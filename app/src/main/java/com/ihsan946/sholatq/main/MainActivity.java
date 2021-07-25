@@ -28,7 +28,6 @@ import com.ihsan946.sholatq.menufragment.DzikirFragment;
 import com.ihsan946.sholatq.menufragment.JadwalFragment;
 import com.ihsan946.sholatq.menufragment.SetelanFragment;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
-import com.ihsan946.sholatq.utils.BroadcastReceiverSholat;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawer;
     TextView textView;
     String time_shubuh,time_dzuhur,
-            time_asr,time_maghrib,time_isya,tanggal_kini;
+            time_asr,time_maghrib,time_isya;
 
 
 
@@ -181,60 +180,60 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    public void setNotifikasiSholat(){
-
-        int ALARM_CODE_SHUBUH = 100;
-        int ALARM_CODE_DZUHUR = 101;
-        int ALARM_CODE_ASR = 102;
-        int ALARM_CODE_MAGHRIB = 103;
-        int ALARM_CODE_ISYA = 104;
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        tanggal_kini = formatter.format(date);
-        BroadcastReceiverSholat broadcastReceiverSholat = new BroadcastReceiverSholat();
+//    public void setNotifikasiSholat(){
 //
-        if(Preference.getStatusShubuhPreference(getBaseContext()) == true){
-            if(!time_shubuh.equals(Preference.getTimeShubuhPreference(getBaseContext()))){
-                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_SHUBUH);
-                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_SHUBUH,
-                        Preference.getTimeShubuhPreference(getBaseContext()),"Shubuh",tanggal_kini);
-            }
-
-        }
-
-        if(Preference.getStatusDzuhurPreference(getBaseContext()) == true){
-            if(!time_dzuhur.equals(Preference.getTimeDzuhurPreference(getBaseContext()))){
-                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_DZUHUR);
-                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_DZUHUR,
-                        Preference.getTimeDzuhurPreference(getBaseContext()),"Dzuhur",tanggal_kini);
-            }
-        }
-
-        if(Preference.getStatusAsrPreference(getBaseContext()) == true){
-            if(!time_asr.equals(Preference.getTimeAsrPreference(getBaseContext()))){
-                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_ASR);
-                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_ASR,
-                        Preference.getTimeAsrPreference(getBaseContext()),"Ashar",tanggal_kini);
-            }
-        }
-
-        if(Preference.getStatusMaghribPreference(getBaseContext()) == true){
-            if(!time_maghrib.equals(Preference.getTimeMaghribPreference(getBaseContext()))){
-                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_MAGHRIB);
-                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_MAGHRIB,
-                        Preference.getTimeMaghribPreference(getBaseContext()),"Maghrib",tanggal_kini);
-            }
-        }
-
-        if(Preference.getStatusIsyaPreference(getBaseContext()) == true){
-            if(!time_isya.equals(Preference.getTimeIsyaPreference(getBaseContext()))){
-                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_ISYA);
-                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_ISYA,
-                        Preference.getTimeIsyaPreference(getBaseContext()),"Isya",tanggal_kini);
-            }
-        }
-
-    }
+//        int ALARM_CODE_SHUBUH = 100;
+//        int ALARM_CODE_DZUHUR = 101;
+//        int ALARM_CODE_ASR = 102;
+//        int ALARM_CODE_MAGHRIB = 103;
+//        int ALARM_CODE_ISYA = 104;
+//        Date date = new Date();
+//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+//        tanggal_kini = formatter.format(date);
+//        BroadcastReceiverSholat broadcastReceiverSholat = new BroadcastReceiverSholat();
+////
+//        if(Preference.getStatusShubuhPreference(getBaseContext()) == true){
+//            if(!time_shubuh.equals(Preference.getTimeShubuhPreference(getBaseContext()))){
+//                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_SHUBUH);
+//                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_SHUBUH,
+//                        Preference.getTimeShubuhPreference(getBaseContext()),"Shubuh",tanggal_kini);
+//            }
+//
+//        }
+//
+//        if(Preference.getStatusDzuhurPreference(getBaseContext()) == true){
+//            if(!time_dzuhur.equals(Preference.getTimeDzuhurPreference(getBaseContext()))){
+//                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_DZUHUR);
+//                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_DZUHUR,
+//                        Preference.getTimeDzuhurPreference(getBaseContext()),"Dzuhur",tanggal_kini);
+//            }
+//        }
+//
+//        if(Preference.getStatusAsrPreference(getBaseContext()) == true){
+//            if(!time_asr.equals(Preference.getTimeAsrPreference(getBaseContext()))){
+//                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_ASR);
+//                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_ASR,
+//                        Preference.getTimeAsrPreference(getBaseContext()),"Ashar",tanggal_kini);
+//            }
+//        }
+//
+//        if(Preference.getStatusMaghribPreference(getBaseContext()) == true){
+//            if(!time_maghrib.equals(Preference.getTimeMaghribPreference(getBaseContext()))){
+//                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_MAGHRIB);
+//                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_MAGHRIB,
+//                        Preference.getTimeMaghribPreference(getBaseContext()),"Maghrib",tanggal_kini);
+//            }
+//        }
+//
+//        if(Preference.getStatusIsyaPreference(getBaseContext()) == true){
+//            if(!time_isya.equals(Preference.getTimeIsyaPreference(getBaseContext()))){
+//                broadcastReceiverSholat.cancelAlarm(getBaseContext(),ALARM_CODE_ISYA);
+//                broadcastReceiverSholat.setRepeatingAlarm(getBaseContext(),ALARM_CODE_ISYA,
+//                        Preference.getTimeIsyaPreference(getBaseContext()),"Isya",tanggal_kini);
+//            }
+//        }
+//
+//    }
 
 
 

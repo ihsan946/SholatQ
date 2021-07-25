@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/dimen10"
-    tools:context=".main.MainActivity">
+    tools:context=".main.MainActivity"
+    tools:ignore="MissingDefaultResource">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -40,18 +41,18 @@
                 android:textColor="@color/bone"
                 android:layout_marginTop="@dimen/dimen20"
                 />
+
             <TextView
+                android:id="@+id/text_utama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mohon_tunggu"
-                android:id="@+id/text_utama"
-                android:fontFamily="@font/rubik400"
                 android:layout_below="@id/name_quotes_main"
-                android:padding="@dimen/dimen20"
                 android:layout_centerHorizontal="true"
+                android:fontFamily="@font/rubik400"
+                android:padding="@dimen/dimen20"
+                android:text="@string/mohon_tunggu"
                 android:textAlignment="center"
-                android:textColor="@color/bone"
-                />
+                android:textColor="@color/bone" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen300"

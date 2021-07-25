@@ -41,7 +41,6 @@ dependencies {
 
 
     implementation 'com.github.ibrahimsn98:CirclesLoadingView:1.0'
-
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -49,7 +48,9 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.8.0'
     implementation 'io.ipgeolocation:ipgeolocation:1.0.12'
     implementation 'com.batoulapps.adhan:adhan:1.2.1'
-    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.jackandphantom.android:circularimageview:1.2.0'
+
+
 
 
 }

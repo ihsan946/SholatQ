@@ -4,12 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ihsan946.sholatq.R;
+import com.jackandphantom.circularimageview.RoundedImage;
 
 public class JadwalsholatAdapter extends RecyclerView.Adapter<JadwalsholatAdapter.MyHolder>{
 
@@ -41,10 +41,6 @@ public class JadwalsholatAdapter extends RecyclerView.Adapter<JadwalsholatAdapte
             holder.value_jadwalsholat.setText(jadwal_sholat[position]);
             holder.background.setImageResource(background);
 
-
-
-
-
         }
 
         @Override
@@ -55,7 +51,7 @@ public class JadwalsholatAdapter extends RecyclerView.Adapter<JadwalsholatAdapte
 
         public class MyHolder extends RecyclerView.ViewHolder {
             TextView name_jadwalsholat,value_jadwalsholat;
-            ImageView background;
+            RoundedImage background;
 
             public MyHolder(View v)
             {

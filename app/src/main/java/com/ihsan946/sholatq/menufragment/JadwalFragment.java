@@ -86,7 +86,7 @@ public class JadwalFragment extends Fragment {
         tanggal = view.findViewById(R.id.tanggal_jadwal);
         lokasi.setText(Preference.getNamaKota(getActivity()));
         Date tanggal_kini = new Date();
-        SimpleDateFormat formatTanggal = new SimpleDateFormat("dd-MMMM-YYYY");
+        SimpleDateFormat formatTanggal = new SimpleDateFormat("dd MMMM YYYY");
         tanggal_terkini = formatTanggal.format(tanggal_kini);
         tanggal.setText(tanggal_terkini);
 

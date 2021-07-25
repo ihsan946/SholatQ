@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/dimen10"
-    tools:context=".main.MainActivity">
+    tools:context=".main.MainActivity"
+    tools:ignore="MissingDefaultResource">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"

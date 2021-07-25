@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.ihsan946.sholatq.R;
-import com.ihsan946.sholatq.utils.BroadcastReceiverSholat;
 
 
 /**
@@ -25,10 +24,8 @@ public class DzikirFragment extends Fragment{
     TextView dzikir;
     Button tambah_dzikir, reset_dzikir;
     int count = 0;
-    BroadcastReceiverSholat broadcastReceiverSholat;
 
-    private final String CHANNEL_ID = "notif_sholat";
-    private final int NOTIFICATION_ID = 999;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";

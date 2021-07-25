@@ -6,16 +6,16 @@
     android:orientation="vertical"
     android:background="@color/bone"
     android:padding="50dp"
-    tools:context=".main.SplashScreen">
+    tools:context=".main.SplashScreen"
+    tools:ignore="MissingDefaultResource">
     <ImageView
-        android:layout_width="@dimen/dimen100"
-        android:layout_height="@dimen/dimen100"
+        android:layout_width="@dimen/dimen200"
+        android:layout_height="@dimen/dimen200"
         android:id="@+id/logo_splash"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@mipmap/ic_launcher_foreground"
-        android:contentDescription="@string/desc_logo"
-        />
+        android:src="@drawable/logo"
+        android:contentDescription="@string/desc_logo" />
     <me.ibrahimsn.lib.CirclesLoadingView
         android:id="@+id/loadingview_splash"
         android:layout_centerHorizontal="true"
