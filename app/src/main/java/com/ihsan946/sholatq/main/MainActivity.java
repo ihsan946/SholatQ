@@ -24,7 +24,6 @@ import com.batoulapps.adhan.PrayerTimes;
 import com.batoulapps.adhan.data.DateComponents;
 import com.google.android.material.navigation.NavigationView;
 import com.ihsan946.sholatq.R;
-import com.ihsan946.sholatq.menufragment.DzikirFragment;
 import com.ihsan946.sholatq.menufragment.JadwalFragment;
 import com.ihsan946.sholatq.menufragment.SetelanFragment;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
@@ -102,9 +101,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu1:
                 fragment = new JadwalFragment();
                 break;
-            case R.id.menu2:
-                fragment = new DzikirFragment();
-                break;
+//            case R.id.menu2:
+//                fragment = new DzikirFragment();
+//                break;
             case R.id.menu3:
                 Intent intent = new Intent(this,MainActivity.class);
                 startActivity(intent);

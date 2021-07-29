@@ -1,87 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bone"
-    tools:context=".menufragment.DzikirFragment">
+    tools:context=".menufragment.DzikirFragment"
+    tools:ignore="MissingDefaultResource">
 
     <!-- TODO: Update blank fragment layout -->
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="?actionBarSize"
-    android:layout_gravity="center"
-    android:layout_marginRight="@dimen/dimen10"
-    android:layout_marginLeft="@dimen/dimen10"
-    android:layout_marginBottom="40dp"
-    android:background="@drawable/border_dzikir"
-    android:orientation="vertical"
-    >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/judul_dzikir"
-        android:fontFamily="@font/rubik400"
-        android:textSize="35sp"
-        android:textColor="@color/bone"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/dimen30"
-        />
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="120dp"
-        android:background="@drawable/border_hitung_dzikir"
-        android:fontFamily="@font/rubik400"
-        android:text="@string/inisiasi_dzikir"
-        android:id="@+id/tampil_hitung_dzikir"
-        android:gravity="center"
-        android:textSize="60sp"
-        android:textColor="@color/bone"
-        />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingStart="50dp"
-        tools:ignore="RtlSymmetry">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="635dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/border_dzikir"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:ignore="UselessParent">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@color/orange_pantone"
-                android:textColor="@color/bone"
-                android:id="@+id/tambah_dzikir"
-                android:fontFamily="@font/rubik400"
-                android:text="@string/tambah"
-                android:layout_marginTop="@dimen/dimen30"
-                android:layout_marginStart="@dimen/dimen20"
-                />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@color/winter_sky"
-                android:fontFamily="@font/rubik400"
-                android:textColor="@color/bone"
-                android:id="@+id/reset_dzikir"
-                android:text="@string/reset"
-                android:layout_marginStart="70dp"
-                android:layout_marginTop="@dimen/dimen30"
-                />
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen30"
+            android:fontFamily="@font/rubik400"
+            android:text="@string/judul_dzikir"
+            android:textColor="@color/bone"
+            android:textSize="35sp" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tampil_hitung_dzikir"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/border_hitung_dzikir"
+            android:fontFamily="@font/rubik400"
+            android:gravity="center"
+            android:text="@string/inisiasi_dzikir"
+            android:textColor="@color/bone"
+            android:textSize="60sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="50dp"
+            tools:ignore="RtlSymmetry">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <Button
+                    android:id="@+id/tambah_dzikir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="@dimen/dimen20"
+                    android:layout_marginTop="@dimen/dimen30"
+                    android:background="@color/orange_pantone"
+                    android:fontFamily="@font/rubik400"
+                    android:text="@string/tambah"
+                    android:textColor="@color/bone" />
+
+                <Button
+                    android:id="@+id/reset_dzikir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="@dimen/dimen30"
+                    android:background="@color/winter_sky"
+                    android:fontFamily="@font/rubik400"
+                    android:text="@string/reset"
+                    android:textColor="@color/bone" />
+
+            </LinearLayout>
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
 
-</LinearLayout>
+    </LinearLayout>
 
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,8 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
     private static final String EXTRA_JADWAL_SHOLAT = "jadwal_sholat";
     public static final String SHOLAT_CHANNEL_ID = "SHOLATQ.JADWALSHOLAT";
     public static final String SHOLAT_CHANNEL_NAME = "SHOLATQ";
+    public static final String SHUBUH_CHANNEL_ID = "SHOLATQ.JADWALSHOLATSHUBUH";
+    public static final String SHUBUH_CHANNEL_NAME = "SHOLATQSHUBUH";
     Uri alarmSound = null;
     Uri alarmSoundShubuh = null;
 
@@ -101,7 +103,7 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
         String name = "SholatQ";
 //
         NotificationManager notificationManagerCompat = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, SHOLAT_CHANNEL_ID)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, SHUBUH_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notify)
                 .setContentTitle(name)
                 .setContentText("Saatnya Waktu Sholat "+ jadwal_sholat)
@@ -121,8 +123,8 @@ public class BroadcastReceiverSholat extends BroadcastReceiver {
 
 // create android channel
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel sholatChannel = new NotificationChannel(SHOLAT_CHANNEL_ID,
-                    SHOLAT_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel sholatChannel = new NotificationChannel(SHUBUH_CHANNEL_ID,
+                    SHUBUH_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
             sholatChannel.enableLights(true);
             sholatChannel.enableVibration(true);
             sholatChannel.setVibrationPattern(new long[]{1000, 1000, 1000, 1000, 1000});

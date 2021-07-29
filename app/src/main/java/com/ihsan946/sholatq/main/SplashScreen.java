@@ -1,10 +1,13 @@
 package com.ihsan946.sholatq.main;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -43,13 +46,26 @@ public class SplashScreen extends AppCompatActivity {
 //
 
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+            if(adaInternet()){
+                Toast.makeText(getBaseContext(), "Maaf Untuk Menggunakan Aplikasi Ini Menggunakan Internet",
+                        Toast.LENGTH_LONG).show();
+                finish();
+            }
+            else{
+                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
 
         }, 4000);
 
 
+    }
+
+    private boolean adaInternet(){
+        ConnectivityManager koneksi = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return koneksi.getActiveNetworkInfo() != null;
     }
 
 //    public void getIp() {
