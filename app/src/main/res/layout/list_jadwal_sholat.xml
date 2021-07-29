@@ -2,9 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="290dp"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
-
     >
     <RelativeLayout
         android:id="@+id/layout_recycle_jadwal"
@@ -12,7 +11,7 @@
         android:layout_height="280dp"
         android:orientation="vertical"
         android:layout_margin="@dimen/dimen10"
-        tools:ignore="UselessParent">
+        >
         <!--->
         <ImageView
             android:layout_width="match_parent"

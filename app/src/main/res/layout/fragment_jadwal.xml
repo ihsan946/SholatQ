@@ -10,7 +10,7 @@
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:paddingLeft="@dimen/dimen10"
         android:paddingRight="@dimen/dimen10"
         android:paddingTop="@dimen/dimen10"
@@ -83,17 +83,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/cardview_atas_jadwal"
-            android:background="@drawable/border_atas_jadwal">
+            android:background="@drawable/border_atas_jadwal"
+            >
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/layout_bawah_jadwal"
                 android:layout_below="@id/cardview_atas_jadwal"
                 android:layout_marginLeft="@dimen/dimen10"
                 android:layout_marginRight="@dimen/dimen10"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="@dimen/dimen10"
                 android:paddingLeft="@dimen/dimen10"
                 android:paddingRight="@dimen/dimen10"
                 tools:ignore="NotSibling" />

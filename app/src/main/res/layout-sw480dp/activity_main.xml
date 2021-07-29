@@ -7,8 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/dimen10"
-    tools:context=".main.MainActivity"
-    tools:ignore="MissingDefaultResource">
+    tools:context=".main.MainActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -20,69 +19,61 @@
             android:layout_height="wrap_content">
 
         </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="70dp"
-            android:id="@+id/relativeLayout3">
-
+            >
             <View
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:id="@+id/background_quotes"
                 android:background="@color/zomp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/name_quotes_main"
+                android:layout_centerHorizontal="true"
                 android:fontFamily="@font/rubik400"
                 android:text="@string/judul_quotes"
                 android:textColor="@color/bone"
                 android:layout_marginTop="@dimen/dimen20"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
-
+                />
             <TextView
-                android:id="@+id/text_utama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/rubik400"
-                android:padding="@dimen/dimen20"
                 android:text="@string/mohon_tunggu"
+                android:id="@+id/text_utama"
+                android:fontFamily="@font/rubik400"
+                android:layout_below="@id/name_quotes_main"
+                android:padding="@dimen/dimen20"
+                android:layout_centerHorizontal="true"
                 android:textAlignment="center"
                 android:textColor="@color/bone"
-                app:layout_constraintTop_toBottomOf="@id/name_quotes_main"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
-
+                />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen300"
                 android:layout_marginTop="@dimen/dimen10"
+                android:layout_below="@id/background_quotes"
                 android:background="@color/cadet_blue"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/background_quotes" />
-
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/background_quotes"
                 android:id="@+id/name_pesan"
                 android:fontFamily="@font/rubik400"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
                 android:text="@string/judul_pesan"
                 android:textColor="@color/bone"
-                app:layout_constraintTop_toBottomOf="@id/background_quotes"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
-
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/name_pesan"
                 android:fontFamily="@font/rubik400"
                 android:layout_marginStart="@dimen/dimen30"
                 android:text="@string/pesan"
@@ -90,58 +81,50 @@
                 android:textAlignment="center"
                 android:textColor="@color/bone"
                 android:layout_marginTop="@dimen/dimen10"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/name_pesan" />
-
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen20"
+                android:layout_below="@id/pesan1"
+                android:layout_marginStart="@dimen/dimen30"
                 android:fontFamily="@font/rubik400"
                 android:text="@string/pesan2"
                 android:id="@+id/pesan2"
                 android:textColor="@color/bone"
-                android:padding="@dimen/dimen10"
                 android:layout_marginTop="@dimen/dimen10"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pesan1" />
-
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/pesan2"
                 android:layout_marginStart="@dimen/dimen30"
                 android:fontFamily="@font/rubik400"
                 android:text="@string/pesan3"
                 android:id="@+id/pesan3"
                 android:textColor="@color/bone"
                 android:layout_marginTop="@dimen/dimen10"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pesan2" />
-
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/pesan3"
                 android:layout_marginStart="@dimen/dimen30"
                 android:fontFamily="@font/rubik400"
                 android:text="@string/copyright"
                 android:id="@+id/copyright"
                 android:textColor="@color/bone"
                 android:layout_marginTop="@dimen/dimen50"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pesan3" />
-
-            <FrameLayout
-                android:id="@+id/flayout_menu"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-                tools:layout_editor_absoluteX="2dp"
-                tools:layout_editor_absoluteY="-70dp">
-
-            </FrameLayout>
+                />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
+        <FrameLayout
+            android:id="@+id/flayout_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" >
+
+        </FrameLayout>
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_menu"
@@ -153,7 +136,6 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_anchorGravity="center"
             app:titleTextColor="@color/white" />
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_menu"

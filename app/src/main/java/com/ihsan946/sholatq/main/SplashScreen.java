@@ -41,12 +41,12 @@ public class SplashScreen extends AppCompatActivity {
 //
 //        getIp();
         getLokasi();
-        getTextQuotes();
+//        getTextQuotes();
 
 //
 
         new Handler().postDelayed(() -> {
-            if(adaInternet()){
+            if(!isInternetConnection()){
                 Toast.makeText(getBaseContext(), "Maaf Untuk Menggunakan Aplikasi Ini Menggunakan Internet",
                         Toast.LENGTH_LONG).show();
                 finish();
@@ -63,10 +63,13 @@ public class SplashScreen extends AppCompatActivity {
 
     }
 
-    private boolean adaInternet(){
-        ConnectivityManager koneksi = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        return koneksi.getActiveNetworkInfo() != null;
+    public  boolean isInternetConnection()
+    {
+
+        ConnectivityManager connectivityManager =  (ConnectivityManager) getBaseContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        return connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting();
     }
+
 
 //    public void getIp() {
 //
