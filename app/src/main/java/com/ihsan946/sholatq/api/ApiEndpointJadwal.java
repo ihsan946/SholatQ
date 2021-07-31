@@ -1,9 +1,9 @@
-package com.ihsan946.sholatq.api;
+//NIM : 10118037
+//NAMA : MUHAMMAD IHSAN
+//KELAS : IF-1 2018
+//Tanggal Pembuatan : 28 Juni 2021
 
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+package com.ihsan946.sholatq.api;
 
 public class ApiEndpointJadwal {
 
