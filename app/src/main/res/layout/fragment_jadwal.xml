@@ -5,12 +5,13 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bone"
-    tools:context=".menufragment.JadwalFragment">
+    tools:context=".menufragment.JadwalFragment"
+    tools:ignore="MissingDefaultResource">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingLeft="@dimen/dimen10"
         android:paddingRight="@dimen/dimen10"
         android:paddingTop="@dimen/dimen10"
@@ -21,19 +22,14 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:id="@+id/cardview_atas_jadwal"
-            android:layout_marginBottom="@dimen/dimen10"
-            app:cardCornerRadius="@dimen/dimen6"
+            app:cardBackgroundColor="@color/cg_blue"
             >
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:id="@+id/layoutatas_jadwal"
                 android:layout_height="150dp"
                 >
-                <com.jackandphantom.circularimageview.RoundedImage
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/background_jadwal_sholat"
-                    />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -81,20 +77,20 @@
         </androidx.cardview.widget.CardView>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/cardview_atas_jadwal"
-            android:background="@drawable/border_atas_jadwal"
-            >
+            android:background="@drawable/border_atas_jadwal">
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/layout_bawah_jadwal"
                 android:layout_below="@id/cardview_atas_jadwal"
                 android:layout_marginLeft="@dimen/dimen10"
                 android:layout_marginRight="@dimen/dimen10"
-                android:layout_marginTop="@dimen/dimen10"
+                android:layout_marginTop="@dimen/dimen20"
+                android:layout_marginBottom="@dimen/dimen20"
                 android:paddingLeft="@dimen/dimen10"
                 android:paddingRight="@dimen/dimen10"
                 tools:ignore="NotSibling" />

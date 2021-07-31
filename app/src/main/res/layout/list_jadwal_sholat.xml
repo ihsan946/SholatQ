@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    >
-    <RelativeLayout
-        android:id="@+id/layout_recycle_jadwal"
-        android:layout_width="wrap_content"
-        android:layout_height="280dp"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/dimen10"
-        >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/dimen20"
+    android:orientation="horizontal">
+
         <!--->
         <ImageView
             android:layout_width="match_parent"
@@ -22,43 +16,46 @@
             android:contentDescription="@string/desc_gambar"
             />
             <!-->
-        <com.jackandphantom.circularimageview.RoundedImage
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/shubuh"
-            android:id="@+id/background_jadwal"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/name_jadwal_sholat"
-            android:fontFamily="@font/rubik400"
-            android:text="@string/name_jadwal"
-            android:layout_marginTop="@dimen/dimen100"
-            android:layout_centerHorizontal="true"
-            android:textSize="40sp"
-            android:textColor="@color/bone"
-            android:layout_marginBottom="@dimen/dimen20"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/value_jadwal_sholat"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/name_jadwal_sholat"
-            android:textColor="@color/bone"
-            android:fontFamily="@font/rubik400"
-            android:text="@string/jam_sholat"
-            android:textSize="40sp"
-            />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen100"
+                app:cardCornerRadius="@dimen/dimen10"
+                app:cardBackgroundColor="@color/cardlist_jadwal"
+                >
+                <LinearLayout
+                    android:id="@+id/layout_recycle_jadwal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/dimen20"
+                    >
+                <TextView
+                    android:layout_width="@dimen/dimen50"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name_jadwal_sholat"
+                    android:fontFamily="@font/rubik400"
+                    android:text="@string/name_jadwal"
+                    android:textSize="30sp"
+                    android:textColor="@color/bone"
+                    android:layout_weight="0.8"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/value_jadwal_sholat"
+                    android:textColor="@color/bone"
+                    android:fontFamily="@font/rubik400"
+                    android:text="@string/jam_sholat"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:layout_weight="0.3"
+                    />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
 
 
 
-
-
-
-
-    </RelativeLayout>
 
 </LinearLayout>

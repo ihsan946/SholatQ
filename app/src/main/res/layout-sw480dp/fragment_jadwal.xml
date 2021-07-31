@@ -22,19 +22,14 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:id="@+id/cardview_atas_jadwal"
-            android:layout_marginBottom="@dimen/dimen10"
-            app:cardCornerRadius="@dimen/dimen6"
+            app:cardBackgroundColor="@color/cg_blue"
             >
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:id="@+id/layoutatas_jadwal"
                 android:layout_height="150dp"
                 >
-                <com.jackandphantom.circularimageview.RoundedImage
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/background_jadwal_sholat"
-                    />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,7 +89,8 @@
                 android:layout_below="@id/cardview_atas_jadwal"
                 android:layout_marginLeft="@dimen/dimen10"
                 android:layout_marginRight="@dimen/dimen10"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="@dimen/dimen20"
+                android:layout_marginBottom="@dimen/dimen20"
                 android:paddingLeft="@dimen/dimen10"
                 android:paddingRight="@dimen/dimen10"
                 tools:ignore="NotSibling" />

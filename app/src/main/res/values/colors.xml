@@ -19,7 +19,9 @@
     <color name="blue_violet">#8338EC</color>
     <color name="pistachio">#90BE6D</color>
     <color name="background_bawah">#31357E</color>
-    <color name="toolbar">#4C4C4B</color>
+    <color name="toolbar">#538FFB</color>
     <color name="azure">#3A86FF</color>
     <color name="cg_blue">#277DA1</color>
+    <color name="cardlist_jadwal">#5B54FA</color>
+    <color name="background_list_jadwal">#35BDD0</color>
 </resources>

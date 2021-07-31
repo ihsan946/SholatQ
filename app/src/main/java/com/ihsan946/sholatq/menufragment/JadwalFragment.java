@@ -100,7 +100,7 @@ public class JadwalFragment extends Fragment {
 //        layout bawah
 
         layout_bawah_jadwal = view.findViewById(R.id.layout_bawah_jadwal);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(fragment, LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(fragment, LinearLayoutManager.VERTICAL, false);
         layout_bawah_jadwal.setLayoutManager(layoutManager);
         Sholatqmodel model = new Sholatqmodel();
 
@@ -110,12 +110,12 @@ public class JadwalFragment extends Fragment {
         String [] jadwal = {
                 time_shubuh,time_dzuhur,time_asr,time_maghrib,time_isya
         };
-        int background = R.drawable.shubuh;
+
 
         model.setName_jadwalsholat(name_jadwal);
         model.setJadwal_sholat(jadwal);
-        model.setBackground_jadwal(background);
-        final JadwalsholatAdapter jadwalsholatAdapter = new JadwalsholatAdapter(model.getName_jadwalsholat(), model.getJadwal_sholat(), model.getBackground_jadwal(), fragment);
+
+        final JadwalsholatAdapter jadwalsholatAdapter = new JadwalsholatAdapter(model.getName_jadwalsholat(), model.getJadwal_sholat(), fragment);
         layout_bawah_jadwal.setAdapter(jadwalsholatAdapter);
 //
         return view;
