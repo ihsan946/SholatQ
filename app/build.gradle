@@ -46,9 +46,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.8.0'
     implementation 'com.squareup.okhttp3:okhttp:4.8.0'
-    implementation 'io.ipgeolocation:ipgeolocation:1.0.12'
     implementation 'com.batoulapps.adhan:adhan:1.2.1'
-    implementation 'com.jackandphantom.android:circularimageview:1.2.0'
 
 
 

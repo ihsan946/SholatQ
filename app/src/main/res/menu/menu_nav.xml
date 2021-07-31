@@ -5,7 +5,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/menu1"
-            android:title="Jadwal Sholat" />
+            android:title="@string/judul_jadwal_sholat"/>
     </group>
     <group
         android:id="@+id/group2_menu"
@@ -13,10 +13,11 @@
         >
         <item
             android:id="@+id/menu3"
-            android:title="Kembali ke Home" />
+            android:title="@string/value_kembali" />
         <item
             android:id="@+id/menu4"
-            android:title="Pengaturan Notifikasi"
+            android:title="@string/value_pengaturan"
             />
+
     </group>
 </menu>

@@ -33,5 +33,15 @@
     <string name="name_jadwal">Jadwal</string>
     <string name="name_tanggal">Tanggal</string>
     <string name="value_tanggal">----------</string>
-    <string name="note_jadwal">Note : Geser tulisan jadwal sholat ke kanan dan kiri jika ingin mengetahui jadwal sholat keseluruhan</string>
+    <string name="value_thanks">Thanks To</string>
+    <string name="pembuat_api_1">https://ipapi.co</string>
+    <string name="library_1">https://github.com/batoulapps/adhan-java</string>
+    <string name="verison_apk">1.0.1.8.2021</string>
+    <string name="developer">Muhammad Ihsan</string>
+    <string name="value_close">close</string>
+    <string name="value_kembali">Kembali Ke Home</string>
+    <string name="value_pengaturan">Pengaturan Notifikasi</string>
+    <string name="value_about">About APP</string>
+
+
 </resources>

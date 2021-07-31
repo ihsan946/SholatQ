@@ -16,7 +16,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ihsan946.sholatq.R;
-import com.jackandphantom.circularimageview.RoundedImage;
 
 public class JadwalsholatAdapter extends RecyclerView.Adapter<JadwalsholatAdapter.MyHolder>{
 
@@ -57,7 +56,6 @@ public class JadwalsholatAdapter extends RecyclerView.Adapter<JadwalsholatAdapte
 
         public class MyHolder extends RecyclerView.ViewHolder {
             TextView name_jadwalsholat,value_jadwalsholat;
-            RoundedImage background;
 
             public MyHolder(View v)
             {

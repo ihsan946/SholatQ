@@ -52,7 +52,7 @@ public class SplashScreen extends AppCompatActivity {
 
         new Handler().postDelayed(() -> {
             if(!isInternetConnection()){
-                Toast.makeText(getBaseContext(), "Maaf Untuk Menggunakan Aplikasi Ini Menggunakan Internet",
+                Toast.makeText(getBaseContext(), "Maaf Untuk Aplikasi Ini Menggunakan Internet",
                         Toast.LENGTH_LONG).show();
                 finish();
             }

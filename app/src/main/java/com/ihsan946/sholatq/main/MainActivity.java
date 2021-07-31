@@ -6,10 +6,12 @@
 package com.ihsan946.sholatq.main;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView textView;
     String time_shubuh,time_dzuhur,
             time_asr,time_maghrib,time_isya;
+    Button about,close;
 
 
 
@@ -89,7 +92,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         textView = findViewById(R.id.text_utama);
         textView.setText(Preference.getQUOTES(getBaseContext()));
 //
+        about = findViewById(R.id.button_about);
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.about_dialog);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Button close = dialog.findViewById(R.id.button_close);
+                close.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.show();
+            }
+        });
+
+//
     }
 
     @Override
@@ -116,6 +138,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu4:
                 fragment = new SetelanFragment();
                 break;
+
+
+
         }
 
         if (fragment != null) {

@@ -56,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen300"
                 android:layout_marginTop="@dimen/dimen10"
+                android:id="@+id/background_copyright"
                 android:layout_below="@id/background_quotes"
                 android:background="@color/cadet_blue"
                 />
@@ -115,6 +116,20 @@
                 android:textColor="@color/bone"
                 android:layout_marginTop="@dimen/dimen50"
                 />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/value_about"
+                android:background="@drawable/border_button_close"
+                android:textColor="@color/white"
+                android:fontFamily="@font/rubik400"
+                android:id="@+id/button_about"
+                android:layout_below="@id/background_copyright"
+                android:layout_marginTop="@dimen/dimen20"
+                android:layout_marginLeft="@dimen/dimen20"
+                android:layout_marginRight="@dimen/dimen20"
+                />
+
 
 
         </RelativeLayout>
