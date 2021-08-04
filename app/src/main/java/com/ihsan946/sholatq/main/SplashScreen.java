@@ -8,12 +8,13 @@ package com.ihsan946.sholatq.main;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.net.Network;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ihsan946.sholatq.R;
@@ -34,6 +35,7 @@ public class SplashScreen extends AppCompatActivity {
 
     Sholatqmodel model;
     String Ip_device,Quotes;
+    boolean koneksi_internet;
 
 
     @Override
@@ -45,18 +47,22 @@ public class SplashScreen extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 //
 //        getIp();
-        getLokasi();
-//        getTextQuotes();
+    cekKoneksiDevice();
 
 //
 
         new Handler().postDelayed(() -> {
-            if(!isInternetConnection()){
-                Toast.makeText(getBaseContext(), "Maaf Untuk Aplikasi Ini Menggunakan Internet",
-                        Toast.LENGTH_LONG).show();
+            if(!koneksi_internet){
+//                Toast.makeText(getBaseContext(), "Maaf Untuk Aplikasi Ini Menggunakan Internet",
+//                        Toast.LENGTH_LONG).show();
+//                finish();
+                Intent intent = new Intent(SplashScreen.this, Noinet.class);
+                startActivity(intent);
                 finish();
             }
             else{
+                getLokasi();
+                getTextQuotes();
                 Intent intent = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(intent);
                 finish();
@@ -70,9 +76,38 @@ public class SplashScreen extends AppCompatActivity {
 
     public  boolean isInternetConnection()
     {
-
         ConnectivityManager connectivityManager =  (ConnectivityManager) getBaseContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         return connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting();
+    }
+
+    private void cekKoneksiDevice(){
+
+        ConnectivityManager connectivityManager;
+        try {
+
+            connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            connectivityManager.registerDefaultNetworkCallback(new ConnectivityManager.NetworkCallback(){
+
+                @Override
+                public void onAvailable(@NonNull Network network) {
+                    koneksi_internet = true;
+                }
+
+                @Override
+                public void onLost(@NonNull Network network) {
+                    koneksi_internet = false;
+                }
+            });
+
+
+
+
+        }catch (Exception e){
+
+            koneksi_internet = false;
+
+        }
+
     }
 
 
@@ -129,47 +164,6 @@ public class SplashScreen extends AppCompatActivity {
     }
 
 
-//    public void getCity() {
-//        String[] pecahkata = Hasil.split("\\n");
-//
-////        Log.d("Pecah",pecahkata[0]);
-////        Log.d("Pecah",pecahkata[1]);
-////        Log.d("Pecah",pecahkata[2]);
-////        Log.d("Pecah",pecahkata[3]);
-////        Log.d("Pecah",pecahkata[4]);
-////        Log.d("Pecah",pecahkata[5]);
-//
-//        String hasil_pecahkota = pecahkata[3];
-//        String hasil_pecahlatitude = pecahkata[4];
-//        String hasil_pecahlongitude = pecahkata[5];
-//
-//        String[] pecahlatitude = hasil_pecahlatitude.split("\\s");
-//        String[] pecahlongitude = hasil_pecahlongitude.split("\\s");
-//        String[] pecahkota = hasil_pecahkota.split("\\s");
-//
-////        Log.d("PecahKota",pecahlatitude[0]);
-////        Log.d("PecahKota",pecahlatitude[1]);
-////        Log.d("PecahKota",pecahlongitude[0]);
-////        Log.d("PecahKota",pecahlongitude[1]);
-//
-//        String Latitude = pecahlatitude[1];
-//        String Longitude = pecahlongitude[1];
-//        String Kota = pecahkota[1];
-//
-////
-////
-//        Preference.setLatitudePreferences(getBaseContext(), Latitude);
-//        Preference.setLongitudePreferences(getBaseContext(), Longitude);
-//        Preference.setKotaPreferences(getBaseContext(), Kota);
-//
-////        String latitude,longitude;
-////        latitude = ip.getGeolocation().getLatitude();
-////        longitude = ip.getGeolocation().getLongitude();
-//
-////        Preference.setLatitudePreferences(getBaseContext(),latitude);
-////        Preference.setLongitudePreferences(getBaseContext(),longitude);
-
-//    }
 
     public void getTextQuotes() {
         ApiServiceQuotes api = ApiEndpointQuotes.getClient().create(ApiServiceQuotes.class);
@@ -178,7 +172,7 @@ public class SplashScreen extends AppCompatActivity {
         call.enqueue(new Callback<ApimodelQuotes>() {
             @Override
             public void onResponse(Call<ApimodelQuotes> call, Response<ApimodelQuotes> response) {
-                if(response.body().status){
+                if((response.body().quotesmodel != null)){
                     Log.v("Hasil", response.body().quotesmodel.text_quotes);
                     Quotes = response.body().quotesmodel.text_quotes;
                     Preference.setQUOTES(getBaseContext(), Quotes);

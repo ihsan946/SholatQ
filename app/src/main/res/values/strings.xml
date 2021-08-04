@@ -42,6 +42,7 @@
     <string name="value_kembali">Kembali Ke Home</string>
     <string name="value_pengaturan">Pengaturan Notifikasi</string>
     <string name="value_about">About APP</string>
+    <string name="pesan_internet">Upps, Nyalakan Internet dan Restart Aplikasi !!!</string>
 
 
 </resources>
