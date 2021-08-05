@@ -8,13 +8,12 @@ package com.ihsan946.sholatq.main;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.Network;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ihsan946.sholatq.R;
@@ -47,7 +46,7 @@ public class SplashScreen extends AppCompatActivity {
 //
 //        getIp();
     cekKoneksiDevice();
-    if(!koneksi_internet){
+    if(koneksi_internet == true){
         getLokasi();
         getTextQuotes();
         new Handler().postDelayed(() -> {
@@ -76,31 +75,14 @@ public class SplashScreen extends AppCompatActivity {
 
     private void cekKoneksiDevice(){
 
-        ConnectivityManager connectivityManager;
-        try {
-
-            connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-            connectivityManager.registerDefaultNetworkCallback(new ConnectivityManager.NetworkCallback(){
-
-                @Override
-                public void onAvailable(@NonNull Network network) {
-                    koneksi_internet = true;
-                }
-
-                @Override
-                public void onLost(@NonNull Network network) {
-                    koneksi_internet = false;
-                }
-            });
-
-
-
-
-        }catch (Exception e){
-
-            koneksi_internet = false;
-
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            koneksi_internet = true;
         }
+        else
+            koneksi_internet = false;
 
     }
 
