@@ -18,7 +18,7 @@ public class ApiEndpointLokasi {
 
 
     public static Retrofit getClient(){
-        String base_url = "https://ipapi.co/";
+        String base_url = "https://ipinfo.io/";
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();

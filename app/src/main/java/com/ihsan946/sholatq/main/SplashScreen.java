@@ -24,7 +24,6 @@ import com.ihsan946.sholatq.api.ApiServiceLokasi;
 import com.ihsan946.sholatq.api.ApiServiceQuotes;
 import com.ihsan946.sholatq.model.ApimodelLokasi;
 import com.ihsan946.sholatq.model.ApimodelQuotes;
-import com.ihsan946.sholatq.model.Sholatqmodel;
 import com.ihsan946.sholatq.sharedpreferenced.Preference;
 
 import retrofit2.Call;
@@ -33,9 +32,9 @@ import retrofit2.Response;
 
 public class SplashScreen extends AppCompatActivity {
 
-    Sholatqmodel model;
-    String Ip_device,Quotes;
+    String Quotes;
     boolean koneksi_internet;
+    String [] hasil;
 
 
     @Override
@@ -48,37 +47,32 @@ public class SplashScreen extends AppCompatActivity {
 //
 //        getIp();
     cekKoneksiDevice();
-
-//
-
+    if(!koneksi_internet){
+        getLokasi();
+        getTextQuotes();
         new Handler().postDelayed(() -> {
-            if(!koneksi_internet){
-//                Toast.makeText(getBaseContext(), "Maaf Untuk Aplikasi Ini Menggunakan Internet",
-//                        Toast.LENGTH_LONG).show();
-//                finish();
+            Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }, 4000);
+    }
+    else{
+        new Handler().postDelayed(() -> {
                 Intent intent = new Intent(SplashScreen.this, Noinet.class);
                 startActivity(intent);
                 finish();
-            }
-            else{
-                getLokasi();
-                getTextQuotes();
-                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-
-
         }, 4000);
+    }
+
+
+
+//
+
+
 
 
     }
 
-    public  boolean isInternetConnection()
-    {
-        ConnectivityManager connectivityManager =  (ConnectivityManager) getBaseContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        return connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting();
-    }
 
     private void cekKoneksiDevice(){
 
@@ -142,23 +136,33 @@ public class SplashScreen extends AppCompatActivity {
     public void getLokasi() {
         ApiServiceLokasi api = ApiEndpointLokasi.getClient().create(ApiServiceLokasi.class);
         Call<ApimodelLokasi> call = api.getLokasi();
-        call.enqueue(new Callback<ApimodelLokasi>() {
-            @Override
-            public void onResponse(Call<ApimodelLokasi> call, Response<ApimodelLokasi> response) {
+            call.enqueue(new Callback<ApimodelLokasi>() {
+                @Override
+                public void onResponse(Call<ApimodelLokasi> call, Response<ApimodelLokasi> response) {
 //                Log.d("Pesan", response.body().kota);
 //                Log.d("Pesan", response.body().latitude);
 //                Log.d("Pesan", response.body().longitude);
-                Preference.setKotaPreferences(getBaseContext(),response.body().kota);
-                Preference.setLatitudePreferences(getBaseContext(),response.body().latitude);
-                Preference.setLongitudePreferences(getBaseContext(),response.body().longitude);
+                    Preference.setKotaPreferences(getBaseContext(),response.body().kota);
 
-            }
+//                    Log.d("loc",response.body().loc);
+                    String loc =response.body().loc;
+                   hasil = loc.split(",");
+                    Log.d("latitude",hasil[0]);
+                    Log.d("longitude", hasil[1]);
+                    Preference.setLatitudePreferences(getBaseContext(),hasil[0]);
+                    Preference.setLongitudePreferences(getBaseContext(),hasil[1]);
 
-            @Override
-            public void onFailure(Call<ApimodelLokasi> call, Throwable t) {
-                Log.d("Pesan", t.toString());
-            }
-        });
+
+                }
+
+                @Override
+                public void onFailure(Call<ApimodelLokasi> call, Throwable t) {
+                    Log.d("Pesan", t.toString());
+                }
+            });
+
+
+
 //
 
     }

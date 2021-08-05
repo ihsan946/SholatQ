@@ -13,10 +13,9 @@ public class ApimodelLokasi {
 //    //   get lokasi pengguna
     @SerializedName("city")
     public String kota;
-    @SerializedName("latitude")
-    public String latitude;
-    @SerializedName("longitude")
-    public String longitude;
+    @SerializedName("loc")
+    public String loc;
+
 
 
 //

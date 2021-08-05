@@ -34,9 +34,10 @@
     <string name="name_tanggal">Tanggal</string>
     <string name="value_tanggal">----------</string>
     <string name="value_thanks">Thanks To</string>
-    <string name="pembuat_api_1">https://ipapi.co</string>
+    <string name="pembuat_api_1">https://ipinfo.io</string>
     <string name="library_1">https://github.com/batoulapps/adhan-java</string>
-    <string name="verison_apk">1.0.1.8.2021</string>
+    <string name="pembuat_api_2">https://github.com/Zhirrr/islamic-rest-api-indonesian-v2</string>
+    <string name="version_apk">1.0.1.8.2021</string>
     <string name="developer">Muhammad Ihsan</string>
     <string name="value_close">close</string>
     <string name="value_kembali">Kembali Ke Home</string>
