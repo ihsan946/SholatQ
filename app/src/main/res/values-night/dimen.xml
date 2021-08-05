@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen3">3dp</dimen>
+    <dimen name="dimen6">6dp</dimen>
+    <dimen name="dimen10">10dp</dimen>
+    <dimen name="dimen20">20dp</dimen>
+    <dimen name="dimen30">30dp</dimen>
+    <dimen name="dimen50">50dp</dimen>
+    <dimen name="dimen100">100dp</dimen>
+    <dimen name="dimen110">110dp</dimen>
+    <dimen name="dimen120">120dp</dimen>
+    <dimen name="dimen200">200dp</dimen>
+    <dimen name="dimen300">300dp</dimen>
+    <dimen name="dimen500">500dp</dimen>
+    <dimen name="dimen525">525dp</dimen>
+
+<!---->
+    <dimen name="sp22">22sp</dimen>
+    <dimen name="sp30">30sp</dimen>
+    <dimen name="sp40">40sp</dimen>
+</resources>

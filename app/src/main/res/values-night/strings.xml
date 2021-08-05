@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">SholatQ</string>
+    <string name="open_drawer">Open Navigation drawer</string>
+    <string name="close_drawer">Close Navigation drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pesan">Assalamualaikum warahmatullahi wabarakatuh,</string>
+    <string name="pesan2">mudah - mudahan dengan aplikasi ini para pengguna menjadi lebih ingat kepada allah</string>
+    <string name="pesan3">untuk melaksanakan ibadahnya dan semoga aplikasi ini bermanfaat</string>
+    <string name="copyright">Salam Hangat, Developer (2021)</string>
+    <string name="judul_pengaturan">Pengaturan Notifikasi Jadwal Sholat</string>
+    <string name="setelan_shubuh">Jadwal Shubuh : </string>
+    <string name="setelan_dzuhur">Jadwal Dzuhur : </string>
+    <string name="setelan_asr">Jadwal Asr : </string>
+    <string name="setelan_maghrib">Jadwal Maghrib : </string>
+    <string name="setelan_isya">Jadwal Isya : </string>
+    <string name="mohon_tunggu">Mohon Tunggu !!!</string>
+    <string name="desc_logo">Logo</string>
+    <string name="desc_gambar">View</string>
+
+    <!---->
+    <string name="judul_pesan">Pesan Untuk Pengguna</string>
+    <string name="judul_quotes">Quotes of Today</string>
+    <string name="name_sholat">Shubuh</string>
+    <string name="jam_sholat">--:--</string>
+    <!---->
+
+    <string name="judul_jadwal_sholat">Jadwal Sholat</string>
+    <string name="judul_dzikir">Dzikir Yuk</string>
+    <string name="inisiasi_dzikir">0</string>
+    <string name="tambah">Tambah</string>
+    <string name="reset">Reset</string>
+    <string name="name_jadwal">Jadwal</string>
+    <string name="name_tanggal">Tanggal</string>
+    <string name="value_tanggal">----------</string>
+    <string name="value_thanks">Thanks To</string>
+    <string name="pembuat_api_1">https://ipinfo.io</string>
+    <string name="library_1">https://github.com/batoulapps/adhan-java</string>
+    <string name="pembuat_api_2">https://github.com/Zhirrr/islamic-rest-api-indonesian-v2</string>
+    <string name="version_apk">1.0.1.8.2021</string>
+    <string name="developer">Muhammad Ihsan</string>
+    <string name="value_close">close</string>
+    <string name="value_kembali">Kembali Ke Home</string>
+    <string name="value_pengaturan">Pengaturan Notifikasi</string>
+    <string name="value_about">About APP</string>
+    <string name="pesan_internet">Upps, Nyalakan Internet dan Restart Aplikasi !!!</string>
+
+
+</resources>
